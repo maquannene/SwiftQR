@@ -19,7 +19,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength)
         statusItem.button?.target = self
         statusItem.button?.action = #selector(AppDelegate.statusItemAction(button:))
-        statusItem.button?.image = NSImage(named: "QQ20170310-0")
+        statusItem.button?.image = NSImage(named: "StatusBarItemIcon")
         
         statusMainViewController = StatusMainViewController()
         popver = NSPopover()
