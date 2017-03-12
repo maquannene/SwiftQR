@@ -7,6 +7,11 @@
 //
 
 import Cocoa
+import Then
+
+enum RightMouseMenu: String {
+    case quit = "Quit"
+}
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -16,24 +21,45 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var statusMainViewController: StatusMainViewController!
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        statusItem = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength)
-        statusItem.button?.target = self
-        statusItem.button?.action = #selector(AppDelegate.statusItemAction(button:))
-        statusItem.button?.image = NSImage(named: "StatusBarItemIcon")
+        statusItem = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength).with {
+            $0.button?.target = self
+            $0.button?.action = #selector(AppDelegate.statusItemAction(button:))
+            $0.button?.sendAction(on: [.rightMouseDown, .leftMouseDown])
+            $0.button?.image = NSImage(named: "StatusBarItemIcon")
+        }
         
         statusMainViewController = StatusMainViewController()
-        popver = NSPopover()
-        popver.contentViewController = statusMainViewController
-        popver.behavior = .transient
+        popver = NSPopover().with {
+            $0.contentViewController = statusMainViewController
+            $0.behavior = .transient
+        }
     }
 
     func statusItemAction(button: NSButton) {
-        popver.show(relativeTo: NSRect.zero, of: button, preferredEdge: NSRectEdge.minY)
-        NSRunningApplication.current().activate(options: [.activateAllWindows, .activateIgnoringOtherApps])
+        guard let event: NSEvent = NSApp.currentEvent else { return }
+        if event.type == NSEventType.rightMouseDown {
+            NSMenu(title: "Setting").with {
+                $0.addItem(NSMenuItem(title: RightMouseMenu.quit.rawValue,
+                                      action: #selector(AppDelegate.quitAppAction),
+                                      keyEquivalent: RightMouseMenu.quit.rawValue))
+                }.do {
+                    statusItem.popUpMenu($0)
+            }
+        }
+        else {
+            popver.show(relativeTo: NSRect.zero, of: button, preferredEdge: NSRectEdge.minY)
+            NSRunningApplication.current().activate(options: [.activateAllWindows, .activateIgnoringOtherApps])
+        }
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
         
+    }
+}
+
+extension AppDelegate {
+    func quitAppAction(sender: Any) {
+        NSApp.terminate(self)
     }
 }
 

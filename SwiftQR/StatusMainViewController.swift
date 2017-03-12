@@ -110,7 +110,7 @@ class StatusMainViewController: NSViewController {
             view.addSubview($0)
             }.do {
                 $0.snp.makeConstraints {
-                    $0.top.equalTo(historicalTableView.snp.bottom).offset(Constants.gap)
+                    $0.top.equalTo(historicalTableView.snp.bottom)
                     $0.left.equalTo(view).offset(Constants.gap)
                     $0.right.bottom.equalTo(view).offset(-Constants.gap)
                     $0.height.equalTo(0)
@@ -141,11 +141,13 @@ extension StatusMainViewController {
             storeQRString(qrString: qrString)
             historicalTableView.reloadData()
             sqrImageView.snp.updateConstraints {
+                $0.top.equalTo(historicalTableView.snp.bottom).offset(Constants.gap)
                 $0.height.equalTo(200)
             }
         }
         else {
             sqrImageView.snp.updateConstraints {
+                $0.top.equalTo(historicalTableView.snp.bottom)
                 $0.height.equalTo(0)
             }
         }
