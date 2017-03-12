@@ -44,6 +44,8 @@ class StatusMainViewController: NSViewController {
 
     override func loadView() {
         view = NSView()
+        view.wantsLayer = true
+        view.layer?.backgroundColor = NSColor.white.cgColor
     }
     
     override func viewDidLoad() {
@@ -69,9 +71,9 @@ class StatusMainViewController: NSViewController {
             view.addSubview($0)
             }.do {
                 $0.snp.makeConstraints {
-                    $0.top.equalTo(sqrInputTextFeild.snp.bottom)
+                    $0.top.equalTo(sqrInputTextFeild.snp.bottom).offset(Constants.gap)
                     $0.left.equalTo(view).offset(Constants.gap)
-                    $0.height.equalTo(30)
+                    $0.height.equalTo(20)
                 }
         }
         
@@ -100,7 +102,7 @@ class StatusMainViewController: NSViewController {
             view.addSubview($0)
             }.do {
                 $0.snp.makeConstraints {
-                    $0.top.equalTo(generateButton.snp.bottom)
+                    $0.top.equalTo(generateButton.snp.bottom).offset(3)
                     $0.left.equalTo(view)
                     $0.right.equalTo(view)
                 }
