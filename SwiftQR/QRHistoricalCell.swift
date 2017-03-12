@@ -13,6 +13,11 @@ class QRHistoricalCell: NSTableCellView {
     @IBOutlet weak var button: NSButton!
     var buttonHandler: ((_ button: NSButton) -> Void)?
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        qrTextField.lineBreakMode = .byTruncatingMiddle
+    }
+    
     @IBAction func buttonAction(_ sender: NSButton) {
         buttonHandler?(sender)
     }
