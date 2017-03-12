@@ -11,9 +11,9 @@ import Cocoa
 class QRHistoricalCell: NSTableCellView {
     @IBOutlet weak var qrTextField: NSTextField!
     @IBOutlet weak var button: NSButton!
-    var buttonHandler: (() -> Void)?
+    var buttonHandler: ((_ button: NSButton) -> Void)?
     
     @IBAction func buttonAction(_ sender: NSButton) {
-        buttonHandler?()
+        buttonHandler?(sender)
     }
 }
