@@ -59,7 +59,7 @@ class StatusMainViewController: NSViewController {
                 $0.snp.makeConstraints {
                     $0.top.left.equalTo(view).offset(Constants.gap)
                     $0.right.equalTo(view).offset(-Constants.gap)
-                    $0.width.equalTo(200)
+                    $0.width.equalTo(250)
                     $0.height.equalTo(40)
                 }
         }
@@ -147,6 +147,11 @@ class StatusMainViewController: NSViewController {
         UserDefaults.standard.set(cacheQRStrings, forKey: Constants.qrStringsKey)
     }
     
+    fileprivate func deleteQRString(at index: Int) {
+        cacheQRStrings.remove(at: index)
+        UserDefaults.standard.set(cacheQRStrings, forKey: Constants.qrStringsKey)
+    }
+    
 }
 
 //  Action
@@ -159,7 +164,7 @@ extension StatusMainViewController {
             historicalTableView.reloadData()
             sqrImageView.snp.updateConstraints {
                 $0.top.equalTo(historicalTableView.snp.bottom).offset(Constants.gap)
-                $0.height.equalTo(200)
+                $0.height.equalTo(250)
             }
         }
         else {
@@ -195,9 +200,13 @@ extension StatusMainViewController: NSTableViewDelegate, NSTableViewDataSource {
         if let cell = tableView.make(withIdentifier: QRHistoricalCell.className(), owner: self) as? QRHistoricalCell {
             if let qrString = cacheQRStrings[row] as String? {
                 cell.textField?.stringValue = qrString
-                    cell.buttonHandler = { [weak self] in
-                        self?.sqrInputTextFeild.stringValue = qrString
-                        self?.generateAction(button: $0)
+                cell.applyHandler = { [weak self] in
+                    self?.sqrInputTextFeild.stringValue = qrString
+                    self?.generateAction(button: $0)
+                }
+                cell.deleteHandler = { [weak self] button in
+                    self?.deleteQRString(at: row)
+                    self?.historicalTableView.reloadData()
                 }
             }
             return cell
