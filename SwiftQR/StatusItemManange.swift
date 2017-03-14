@@ -14,20 +14,19 @@ enum RightMouseMenu: String {
 
 class StatusItemManange {
     
-    var statusItem: NSStatusItem!
-    var popver: NSPopover!
-    var statusMainViewController: StatusMainViewController!
+    var statusItem: NSStatusItem = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength)
+    var popver: NSPopover = NSPopover()
+    var statusMainViewController: StatusMainViewController = StatusMainViewController()
     
     init() {
-        statusItem = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength).with {
+        statusItem.do {
             $0.button?.target = self
             $0.button?.action = #selector(StatusItemManange.statusItemAction(button:))
             $0.button?.sendAction(on: [.rightMouseDown, .leftMouseDown])
             $0.button?.image = NSImage(named: "StatusBarItemIcon")
         }
         
-        statusMainViewController = StatusMainViewController()
-        popver = NSPopover().with {
+        popver.do {
             $0.contentViewController = statusMainViewController
             $0.behavior = .transient
         }
@@ -77,8 +76,8 @@ extension StatusItemManange {
     func showRightClickMenu(on view: NSView) {
         NSMenu(title: "Setting").with {
             $0.addItem(NSMenuItem(title: RightMouseMenu.quit.rawValue,
-                                  action: #selector(StatusItemManange.quitAppAction),
-                                  keyEquivalent: RightMouseMenu.quit.rawValue))
+                                  action: #selector(StatusItemManange.quitAppAction(sender:)),
+                                  keyEquivalent: RightMouseMenu.quit.rawValue).with { $0.target = self })
             }.do {
                 statusItem.popUpMenu($0)
         }
