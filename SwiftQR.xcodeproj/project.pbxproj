@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C4802121E77A3110041153F /* StatusItemManange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4802111E77A3110041153F /* StatusItemManange.swift */; };
+		5CF522EE1E76D077006B599E /* DDHotKeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF522E91E76D077006B599E /* DDHotKeyCenter.m */; };
+		5CF522EF1E76D077006B599E /* DDHotKeyTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF522EB1E76D077006B599E /* DDHotKeyTextField.m */; };
+		5CF522F01E76D077006B599E /* DDHotKeyUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF522ED1E76D077006B599E /* DDHotKeyUtilities.m */; };
+		5CF522F31E76D0E9006B599E /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF522F11E76D0DB006B599E /* AppKit.framework */; };
+		5CF522F41E76D0F1006B599E /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF522F11E76D0DB006B599E /* AppKit.framework */; };
+		5CF522F51E76D0F1006B599E /* AppKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF522F11E76D0DB006B599E /* AppKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BCD218B1A49BF591E14D7279 /* Pods_SwiftQR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3094AAEF794A3C7E4E9345E /* Pods_SwiftQR.framework */; };
 		D42B54D31E72CFD500D157AE /* bitstream.c in Sources */ = {isa = PBXBuildFile; fileRef = D42B54C31E72CFD500D157AE /* bitstream.c */; };
 		D42B54D41E72CFD500D157AE /* mask.c in Sources */ = {isa = PBXBuildFile; fileRef = D42B54C51E72CFD500D157AE /* mask.c */; };
@@ -24,9 +31,31 @@
 		D4C179431E72CE5D007419B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4C179411E72CE5D007419B9 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		5CF522F61E76D0F2006B599E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5CF522F51E76D0F1006B599E /* AppKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		063FD078CDB64F20CA46464A /* Pods-SwiftQR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftQR.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftQR/Pods-SwiftQR.release.xcconfig"; sourceTree = "<group>"; };
 		57A9BB018F735630B55CBCCB /* Pods-SwiftQR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftQR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftQR/Pods-SwiftQR.debug.xcconfig"; sourceTree = "<group>"; };
+		5C4802111E77A3110041153F /* StatusItemManange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItemManange.swift; sourceTree = "<group>"; };
+		5CF522E81E76D077006B599E /* DDHotKeyCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHotKeyCenter.h; sourceTree = "<group>"; };
+		5CF522E91E76D077006B599E /* DDHotKeyCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHotKeyCenter.m; sourceTree = "<group>"; };
+		5CF522EA1E76D077006B599E /* DDHotKeyTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHotKeyTextField.h; sourceTree = "<group>"; };
+		5CF522EB1E76D077006B599E /* DDHotKeyTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHotKeyTextField.m; sourceTree = "<group>"; };
+		5CF522EC1E76D077006B599E /* DDHotKeyUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHotKeyUtilities.h; sourceTree = "<group>"; };
+		5CF522ED1E76D077006B599E /* DDHotKeyUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHotKeyUtilities.m; sourceTree = "<group>"; };
+		5CF522F11E76D0DB006B599E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		A3094AAEF794A3C7E4E9345E /* Pods_SwiftQR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftQR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D42B54C31E72CFD500D157AE /* bitstream.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bitstream.c; sourceTree = "<group>"; };
 		D42B54C41E72CFD500D157AE /* bitstream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bitstream.h; sourceTree = "<group>"; };
@@ -60,6 +89,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CF522F41E76D0F1006B599E /* AppKit.framework in Frameworks */,
+				5CF522F31E76D0E9006B599E /* AppKit.framework in Frameworks */,
 				BCD218B1A49BF591E14D7279 /* Pods_SwiftQR.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -67,9 +98,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5CF522E71E76D077006B599E /* DDHotKey */ = {
+			isa = PBXGroup;
+			children = (
+				5CF522E81E76D077006B599E /* DDHotKeyCenter.h */,
+				5CF522E91E76D077006B599E /* DDHotKeyCenter.m */,
+				5CF522EA1E76D077006B599E /* DDHotKeyTextField.h */,
+				5CF522EB1E76D077006B599E /* DDHotKeyTextField.m */,
+				5CF522EC1E76D077006B599E /* DDHotKeyUtilities.h */,
+				5CF522ED1E76D077006B599E /* DDHotKeyUtilities.m */,
+			);
+			path = DDHotKey;
+			sourceTree = "<group>";
+		};
 		C5FD38BE5CBBB5091DECE105 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5CF522F11E76D0DB006B599E /* AppKit.framework */,
 				A3094AAEF794A3C7E4E9345E /* Pods_SwiftQR.framework */,
 			);
 			name = Frameworks;
@@ -78,6 +123,7 @@
 		D42B54C01E72CFCA00D157AE /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				5CF522E71E76D077006B599E /* DDHotKey */,
 				D42B54C11E72CFD500D157AE /* QR */,
 			);
 			name = Lib;
@@ -138,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				D4C1793B1E72CE5D007419B9 /* AppDelegate.swift */,
+				5C4802111E77A3110041153F /* StatusItemManange.swift */,
 				D42B54DF1E72D28200D157AE /* StatusMainViewController.swift */,
 				D42B54E31E742D4700D157AE /* QRHistoricalCell.swift */,
 				D42B54E51E742D6300D157AE /* QRHistoricalCell.xib */,
@@ -171,6 +218,7 @@
 				D4C179361E72CE5D007419B9 /* Resources */,
 				775777F8987A25C5E2228F85 /* [CP] Embed Pods Frameworks */,
 				562B49A43F321D60DFE91C4A /* [CP] Copy Pods Resources */,
+				5CF522F61E76D0F2006B599E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -285,8 +333,12 @@
 			files = (
 				D42B54D81E72CFD500D157AE /* rscode.c in Sources */,
 				D42B54D31E72CFD500D157AE /* bitstream.c in Sources */,
+				5CF522EF1E76D077006B599E /* DDHotKeyTextField.m in Sources */,
 				D42B54D91E72CFD500D157AE /* split.c in Sources */,
 				D42B54D51E72CFD500D157AE /* qrencode.c in Sources */,
+				5CF522EE1E76D077006B599E /* DDHotKeyCenter.m in Sources */,
+				5C4802121E77A3110041153F /* StatusItemManange.swift in Sources */,
+				5CF522F01E76D077006B599E /* DDHotKeyUtilities.m in Sources */,
 				D4C1793C1E72CE5D007419B9 /* AppDelegate.swift in Sources */,
 				D42B54DA1E72CFD500D157AE /* NSImage+MDQRCode.m in Sources */,
 				D42B54D71E72CFD500D157AE /* qrspec.c in Sources */,
