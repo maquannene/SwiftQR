@@ -9,6 +9,7 @@
 import Foundation
 
 enum RightMouseMenu: String {
+    case hotkey = "Hot Key"
     case quit = "Quit"
 }
 
@@ -38,6 +39,14 @@ class StatusItemManange {
                               target: self,
                               action: #selector(StatusItemManange.shortCut(event:)),
                               object: nil)
+        }
+        
+        //
+        NSEvent.addLocalMonitorForEvents(matching: .keyDown) { (event) -> NSEvent? in
+            let _ = HotKey(keyCode: event.keyCode,
+                           modifierFlags: event.modifierFlags,
+                           charactersIgnoringModifiers: event.charactersIgnoringModifiers)
+            return event
         }
     }
 }
@@ -75,6 +84,11 @@ extension StatusItemManange {
     
     func showRightClickMenu(on view: NSView) {
         NSMenu(title: "Setting").with {
+            let keyCodeReadable = KeyCodeParse.keyStringFrom(characters: "V", modifierFlags: .option)
+            $0.addItem(NSMenuItem(title: RightMouseMenu.hotkey.rawValue + "   " + keyCodeReadable.0 + " " + keyCodeReadable.1,
+                                  action: nil,
+                                  keyEquivalent: RightMouseMenu.hotkey.rawValue))
+            $0.addItem(NSMenuItem.separator())
             $0.addItem(NSMenuItem(title: RightMouseMenu.quit.rawValue,
                                   action: #selector(StatusItemManange.quitAppAction(sender:)),
                                   keyEquivalent: RightMouseMenu.quit.rawValue).with { $0.target = self })

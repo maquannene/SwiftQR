@@ -75,7 +75,7 @@ class StatusMainViewController: NSViewController {
                     $0.top.equalTo(sqrInputTextFeild.snp.bottom).offset(Constants.gap)
                     $0.left.equalTo(view).offset(Constants.gap)
                     $0.right.equalTo(view).offset(-Constants.gap)
-                    $0.height.equalTo(20)
+                    $0.height.equalTo(24)
                 }
         }
         
@@ -89,7 +89,7 @@ class StatusMainViewController: NSViewController {
                 $0.snp.makeConstraints {
                     $0.top.equalTo(generateButton.snp.bottom).offset(Constants.gap)
                     $0.left.equalTo(generateButton)
-                    $0.height.equalTo(20)
+                    $0.height.equalTo(24)
                 }
         }
         
