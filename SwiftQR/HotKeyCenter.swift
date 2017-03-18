@@ -6,7 +6,7 @@
 //  Copyright © 2017 马权. All rights reserved.
 //
 
-struct HotKey {
+class HotKey: NSObject, NSCoding {
     
     var keyCode: UInt16
     var modifierFlags: NSEventModifierFlags
@@ -34,6 +34,18 @@ struct HotKey {
         self.keyCode = keyCode
         self.modifierFlags = modifierFlags
     }
+    
+    public func encode(with aCoder: NSCoder) {
+        aCoder.encode(Int32(keyCode), forKey: "keyCode")
+        aCoder.encode(Int32(modifierFlags.rawValue), forKey: "modifierFlags")
+    }
+    
+    required convenience init?(coder aDecoder: NSCoder) {        
+        let keyCode = UInt16(aDecoder.decodeInteger(forKey: "keyCode"))
+        let modifierFlags = NSEventModifierFlags(rawValue: UInt(aDecoder.decodeInteger(forKey: "modifierFlags")))
+        self.init(keyCode: keyCode,
+                  modifierFlags: modifierFlags)
+    }
 }
 
 final class HotKeyCenter {
@@ -41,6 +53,7 @@ final class HotKeyCenter {
     static let shared: HotKeyCenter = HotKeyCenter()
     static let defaultKeyCode = UInt16(0x09)
     static let defaultModifierFlags = NSEventModifierFlags.control
+    static let hotKeyIndenfierKey: String = "hotKeyIndenfierKey.HotKeyCenter"
     
     private weak var _observer: AnyObject?
     private var _selector: Selector?
@@ -52,8 +65,16 @@ final class HotKeyCenter {
     }
     
     private init() {
-        _hotKey = HotKey(keyCode: HotKeyCenter.defaultKeyCode,
-                         modifierFlags: HotKeyCenter.defaultModifierFlags)
+        if let hotKeyData = UserDefaults.standard.object(forKey: HotKeyCenter.hotKeyIndenfierKey) as? Data,
+           let hotKey = NSKeyedUnarchiver.unarchiveObject(with: hotKeyData) as? HotKey {
+            _hotKey = hotKey
+        }
+        else {
+            _hotKey = HotKey(keyCode: HotKeyCenter.defaultKeyCode,
+                             modifierFlags: HotKeyCenter.defaultModifierFlags)
+            UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: _hotKey),
+                                      forKey: HotKeyCenter.hotKeyIndenfierKey)
+        }
     }
     
     public var hotKeyCore: DDHotKeyCenter = DDHotKeyCenter.shared()
@@ -82,6 +103,8 @@ final class HotKeyCenter {
         }
         _hotKey = HotKey(keyCode: keyCode,
                          modifierFlags: modifierFlags)
+        UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: _hotKey),
+                                  forKey: HotKeyCenter.hotKeyIndenfierKey)
         if let hotKey = _hotKey as HotKey? {
             DDHotKeyCenter.shared().do {
                 $0.unregisterAllHotKeys()

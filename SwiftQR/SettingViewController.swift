@@ -18,7 +18,6 @@ class SettingViewController: NSViewController {
         view.wantsLayer = true
         view.layer?.backgroundColor = NSColor.white.cgColor
         self.hotKeyButton.title = HotKeyCenter.shared.hotKey.hotKeyStringReadable
-        
         NSEvent.addLocalMonitorForEvents(matching: .keyDown) { (event) -> NSEvent? in
             HotKeyCenter.shared.regist(keyCode: event.keyCode, modifierFlags: event.modifierFlags)
             self.hotKeyButton.title = HotKeyCenter.shared.hotKey.hotKeyStringReadable
