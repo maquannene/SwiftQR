@@ -10,7 +10,7 @@ import Cocoa
 
 struct KeyCodeParse {
     static let REPLACE_MAP: Dictionary<String, String> = [
-        "\r"   : "↵\n",
+        "\r"   : "↵",
         "\u{1B}"   : "⎋",
         "\t"   : "⇥",
         "\u{19}" : "⇤",
@@ -43,7 +43,12 @@ struct KeyCodeParse {
         "\u{F72B}" : "↘",
         ]
     
-    static func keyStringFrom(characters:String, modifierFlags: NSEventModifierFlags)->(String, String) {
+    static func keyStringFrom(keyCode:UInt16, modifierFlags: NSEventModifierFlags)->(String) {
+        let strings: (String, String) = self.keyStringFrom(keyCode: keyCode, modifierFlags: modifierFlags)
+        return strings.0 + strings.1
+    }
+    
+    static func keyStringFrom(keyCode:UInt16, modifierFlags: NSEventModifierFlags)->(String, String) {
         var mod = ""
         if modifierFlags.rawValue &  NSEventModifierFlags.control.rawValue != 0 {
             mod += "⌃"
@@ -58,7 +63,7 @@ struct KeyCodeParse {
             mod += "⌘"
         }
         
-        let char = keyToReadable(string: characters.uppercased())
+        let char = keyToReadable(string: keyName(scanCode: keyCode)?.uppercased() ?? "")
         
         return (mod, char)
     }
@@ -69,5 +74,33 @@ struct KeyCodeParse {
             str = str.replacingOccurrences(of: k, with: v)
         }
         return str
+    }
+    
+    static func keyName(scanCode: UInt16) -> String? {
+        let maxNameLength = 4
+        var nameBuffer = [UniChar](repeating: 0, count : maxNameLength)
+        var nameLength = 0
+        
+        let modifierKeys = UInt32(alphaLock >> 8) & 0xFF // Caps Lock
+        var deadKeys: UInt32 = 0
+        let keyboardType = UInt32(LMGetKbdType())
+        
+        let source = TISCopyCurrentKeyboardLayoutInputSource().takeRetainedValue()
+        guard let ptr = TISGetInputSourceProperty(source, kTISPropertyUnicodeKeyLayoutData) else {
+            NSLog("Could not get keyboard layout data")
+            return nil
+        }
+        let layoutData = Unmanaged<CFData>.fromOpaque(ptr).takeUnretainedValue() as Data
+        let osStatus = layoutData.withUnsafeBytes {
+            UCKeyTranslate($0, scanCode, UInt16(kUCKeyActionDown),
+                           modifierKeys, keyboardType, UInt32(kUCKeyTranslateNoDeadKeysMask),
+                           &deadKeys, maxNameLength, &nameLength, &nameBuffer)
+        }
+        guard osStatus == noErr else {
+            NSLog("Code: 0x%04X  Status: %+i", scanCode, osStatus);
+            return nil
+        }
+        
+        return  String(utf16CodeUnits: nameBuffer, count: nameLength)
     }
 }

@@ -18,11 +18,14 @@ class StatusItemManange {
     var statusItem: NSStatusItem = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength)
     var popver: NSPopover = NSPopover()
     var statusMainViewController: StatusMainViewController = StatusMainViewController()
+    var settingWindowController:SettingWindowController?
     
     init() {
+        _ = HotKeyCenter.shared.regist(observer: self, selector: #selector(self.hotKeyAction(event:)))
+        
         statusItem.do {
             $0.button?.target = self
-            $0.button?.action = #selector(StatusItemManange.statusItemAction(button:))
+            $0.button?.action = #selector(self.statusItemAction(button:))
             $0.button?.sendAction(on: [.rightMouseDown, .leftMouseDown])
             $0.button?.image = NSImage(named: "StatusBarItemIcon")
         }
@@ -31,34 +34,34 @@ class StatusItemManange {
             $0.contentViewController = statusMainViewController
             $0.behavior = .transient
         }
-        
-        // 快捷键
-        DDHotKeyCenter.shared().do {
-            $0.registerHotKey(withKeyCode: UInt16(Int(0x09)),
-                              modifierFlags: NSEventModifierFlags.control.rawValue,
-                              target: self,
-                              action: #selector(StatusItemManange.shortCut(event:)),
-                              object: nil)
+    }
+    
+    func showLeftClickPopver() {
+        if let button = statusItem.button as NSButton? {
+            popver.show(relativeTo: NSRect.zero, of: button, preferredEdge: NSRectEdge.minY)
+            NSRunningApplication.current().activate(options: [.activateAllWindows, .activateIgnoringOtherApps])
         }
-        
-        //
-        NSEvent.addLocalMonitorForEvents(matching: .keyDown) { (event) -> NSEvent? in
-            let _ = HotKey(keyCode: event.keyCode,
-                           modifierFlags: event.modifierFlags,
-                           charactersIgnoringModifiers: event.charactersIgnoringModifiers)
-            return event
+    }
+    
+    func showRightClickMenu(on view: NSView) {
+        NSMenu(title: "Setting").with {
+            let item = NSMenuItem(title: RightMouseMenu.hotkey.rawValue,
+                                  action: #selector(self.showSettingContoller(sender:)),
+                                  keyEquivalent: HotKeyCenter.shared.hotKey.keyCodeReadable.lowercased()).with { $0.target = self }
+            item.keyEquivalentModifierMask = [.option]
+            $0.addItem(item)
+            $0.addItem(NSMenuItem.separator())
+            $0.addItem(NSMenuItem(title: RightMouseMenu.quit.rawValue,
+                                  action: #selector(self.quitAppAction(sender:)),
+                                  keyEquivalent: RightMouseMenu.quit.rawValue).with { $0.target = self })
+            }.do {
+                statusItem.popUpMenu($0)
         }
     }
 }
 
 // MARK: - Public
 extension StatusItemManange {
-    func dealloc() {
-        DDHotKeyCenter.shared().do {
-            $0.unregisterHotKey(withKeyCode: UInt16(Int(0x09)),
-                                modifierFlags: NSEventModifierFlags.control.rawValue)
-        }
-    }
 }
 
 // MARK: - Action
@@ -75,36 +78,20 @@ extension StatusItemManange {
         }
     }
     
-    func showLeftClickPopver() {
-        if let button = statusItem.button as NSButton? {
-            popver.show(relativeTo: NSRect.zero, of: button, preferredEdge: NSRectEdge.minY)
-            NSRunningApplication.current().activate(options: [.activateAllWindows, .activateIgnoringOtherApps])
-        }
-    }
-    
-    func showRightClickMenu(on view: NSView) {
-        NSMenu(title: "Setting").with {
-            let keyCodeReadable = KeyCodeParse.keyStringFrom(characters: "V", modifierFlags: .option)
-            $0.addItem(NSMenuItem(title: RightMouseMenu.hotkey.rawValue + "   " + keyCodeReadable.0 + " " + keyCodeReadable.1,
-                                  action: nil,
-                                  keyEquivalent: RightMouseMenu.hotkey.rawValue))
-            $0.addItem(NSMenuItem.separator())
-            $0.addItem(NSMenuItem(title: RightMouseMenu.quit.rawValue,
-                                  action: #selector(StatusItemManange.quitAppAction(sender:)),
-                                  keyEquivalent: RightMouseMenu.quit.rawValue).with { $0.target = self })
-            }.do {
-                statusItem.popUpMenu($0)
-        }
-    }
-    
     /// shortCut
-    @objc func shortCut(event: NSEvent) {
+    @objc func hotKeyAction(event: NSEvent) {
         if !popver.isShown {
             showLeftClickPopver()
         }
         else {
             popver.close()
         }
+    }
+    
+    @objc func showSettingContoller(sender: Any) {
+        NSRunningApplication.current().activate(options: [.activateAllWindows, .activateIgnoringOtherApps])
+        settingWindowController = SettingWindowController.windowController()
+        settingWindowController?.showWindow(self)
     }
     
     /// quit`
