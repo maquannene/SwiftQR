@@ -9,7 +9,7 @@
         <!--Window Controller-->
         <scene sceneID="qhQ-Rl-cQ5">
             <objects>
-                <windowController showSeguePresentationStyle="single" id="93P-Fr-BK0" customClass="SettingWindowController" customModule="SwiftQR" customModuleProvider="target" sceneMemberID="viewController">
+                <windowController showSeguePresentationStyle="single" id="93P-Fr-BK0" customClass="HotKeySettingWindowController" customModule="SwiftQR" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="UNt-7W-qBd">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <rect key="contentRect" x="196" y="238" width="480" height="272"/>
@@ -23,18 +23,18 @@
             </objects>
             <point key="canvasLocation" x="-59" y="-294"/>
         </scene>
-        <!--Setting View Controller-->
+        <!--Hot Key Setting View Controller-->
         <scene sceneID="JVG-lV-Y0s">
             <objects>
-                <viewController id="0Zc-vP-RcM" customClass="SettingViewController" customModule="SwiftQR" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="0Zc-vP-RcM" customClass="HotKeySettingViewController" customModule="SwiftQR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" misplaced="YES" id="u80-RM-Fc4">
                         <rect key="frame" x="0.0" y="0.0" width="379" height="267"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ctC-Zp-cfN">
-                                <rect key="frame" x="61" y="189" width="125" height="25"/>
+                                <rect key="frame" x="61" y="189" width="125" height="23"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="c4z-bk-QMu"/>
+                                    <constraint firstAttribute="height" constant="20" id="c4z-bk-QMu"/>
                                     <constraint firstAttribute="width" constant="100" id="nb1-Ka-JQH"/>
                                 </constraints>
                                 <buttonCell key="cell" type="roundTextured" title="Textured Rounded" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8fC-18-Ius">
@@ -50,7 +50,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="72" id="USW-wL-qX7"/>
                                 </constraints>
-                                <buttonCell key="cell" type="push" title="Default" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hU2-x9-Tbe">
+                                <buttonCell key="cell" type="push" title="Reset" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hU2-x9-Tbe">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
