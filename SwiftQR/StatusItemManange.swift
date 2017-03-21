@@ -37,8 +37,8 @@ class StatusItemManange {
     
     fileprivate func showLeftClickPopver() {
         if let button = _statusItem.button as NSButton? {
+            NSRunningApplication.current().activate(options: [.activateAllWindows, .activateIgnoringOtherApps])
             _popver.show(relativeTo: NSRect.zero, of: button, preferredEdge: NSRectEdge.minY)
-            NSApp.activate(ignoringOtherApps: true)
         }
     }
     
@@ -91,7 +91,7 @@ extension StatusItemManange {
         if let window = _settingWindowController?.window as NSWindow?, window.isVisible {
             return
         }
-        NSApp.activate(ignoringOtherApps: false)
+        NSRunningApplication.current().activate(options: [.activateAllWindows, .activateIgnoringOtherApps])
         _settingWindowController = HotKeySettingWindowController.windowController()
         _settingWindowController?.showWindow(self)
     }
