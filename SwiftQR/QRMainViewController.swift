@@ -15,16 +15,14 @@ private struct Constants {
     static let qrStringsKey = "QRStringsKey"
 }
 
-class StatusMainViewController: NSViewController {
+class QRMainViewController: NSViewController {
     
     lazy var sqrInputTextFeild: NSTextField = NSTextField(frame: NSRect.zero)
     lazy var generateButton: NSButton = NSButton(frame: NSRect.zero)
     lazy var saveCacheButton: NSButton = NSButton(frame: NSRect.zero)
     lazy var cleanCacheButton: NSButton = NSButton(frame: NSRect.zero)
-    lazy var tableViewContainerView: NSScrollView = NSScrollView(frame: NSRect.zero)
-    lazy var historicalTableView: NSTableView = NSTableView(frame: NSRect.zero)
-    lazy var sqrImageView: NSImageView = NSImageView(frame: NSRect.zero)
-    lazy var alertText: NSText = NSText(frame: NSRect.zero)
+    lazy var _historicalTableView: NSTableView = NSTableView(frame: NSRect.zero)
+    lazy var _sqrImageView: NSImageView = NSImageView(frame: NSRect.zero)
     
     var cacheQRStrings: Array<String>
     
@@ -68,14 +66,14 @@ class StatusMainViewController: NSViewController {
             $0.title = "Generate QR Code"
             $0.bezelStyle = .rounded
             $0.target = self
-            $0.action = #selector(StatusMainViewController.generateAction(button:))
+            $0.action = #selector(self.generateAction(button:))
             view.addSubview($0)
             }.do {
                 $0.snp.makeConstraints {
                     $0.top.equalTo(sqrInputTextFeild.snp.bottom).offset(Constants.gap)
                     $0.left.equalTo(view).offset(Constants.gap)
                     $0.right.equalTo(view).offset(-Constants.gap)
-                    $0.height.equalTo(20)
+                    $0.height.equalTo(24)
                 }
         }
         
@@ -83,13 +81,13 @@ class StatusMainViewController: NSViewController {
             $0.title = "Save QR"
             $0.bezelStyle = .rounded
             $0.target = self
-            $0.action = #selector(StatusMainViewController.saveCacheAction(button:))
+            $0.action = #selector(self.saveCacheAction(button:))
             view.addSubview($0)
             }.do {
                 $0.snp.makeConstraints {
                     $0.top.equalTo(generateButton.snp.bottom).offset(Constants.gap)
                     $0.left.equalTo(generateButton)
-                    $0.height.equalTo(20)
+                    $0.height.equalTo(24)
                 }
         }
         
@@ -97,7 +95,7 @@ class StatusMainViewController: NSViewController {
             $0.title = "Clean History"
             $0.bezelStyle = .rounded
             $0.target = self
-            $0.action = #selector(StatusMainViewController.cleanAllCacheAction(button:))
+            $0.action = #selector(self.cleanAllCacheAction(button:))
             view.addSubview($0)
             }.do {
                 $0.snp.makeConstraints {
@@ -108,7 +106,7 @@ class StatusMainViewController: NSViewController {
                 }
         }
     
-        historicalTableView.with {
+        _historicalTableView.with {
             let nib = NSNib(nibNamed: String(describing: QRHistoricalCell.self), bundle: Bundle.main)
             $0.register(nib, forIdentifier: QRHistoricalCell.className())
             $0.delegate = self
@@ -124,11 +122,11 @@ class StatusMainViewController: NSViewController {
                 }
         }
         
-        sqrImageView.with {
+        _sqrImageView.with {
             view.addSubview($0)
             }.do {
                 $0.snp.makeConstraints {
-                    $0.top.equalTo(historicalTableView.snp.bottom)
+                    $0.top.equalTo(_historicalTableView.snp.bottom)
                     $0.left.equalTo(view).offset(Constants.gap)
                     $0.right.bottom.equalTo(view).offset(-Constants.gap)
                     $0.height.equalTo(0)
@@ -155,21 +153,21 @@ class StatusMainViewController: NSViewController {
 }
 
 //  Action
-extension StatusMainViewController {
+extension QRMainViewController {
     func generateAction(button: NSButton) {
         let qrString = sqrInputTextFeild.stringValue
         if  qrString.characters.count > 0 {
-            let image = NSImage.mdQRCode(for: qrString, size: sqrImageView.frame.size.width)
-            sqrImageView.image = image
-            historicalTableView.reloadData()
-            sqrImageView.snp.updateConstraints {
-                $0.top.equalTo(historicalTableView.snp.bottom).offset(Constants.gap)
+            let image = NSImage.mdQRCode(for: qrString, size: _sqrImageView.frame.size.width)
+            _sqrImageView.image = image
+            _historicalTableView.reloadData()
+            _sqrImageView.snp.updateConstraints {
+                $0.top.equalTo(_historicalTableView.snp.bottom).offset(Constants.gap)
                 $0.height.equalTo(250)
             }
         }
         else {
-            sqrImageView.snp.updateConstraints {
-                $0.top.equalTo(historicalTableView.snp.bottom)
+            _sqrImageView.snp.updateConstraints {
+                $0.top.equalTo(_historicalTableView.snp.bottom)
                 $0.height.equalTo(0)
             }
         }
@@ -179,19 +177,19 @@ extension StatusMainViewController {
         let qrString = sqrInputTextFeild.stringValue
         if  qrString.characters.count > 0 {
             storeQRString(qrString: qrString)
-            historicalTableView.reloadData()
+            _historicalTableView.reloadData()
         }
     }
     
     func cleanAllCacheAction(button: NSButton) {
         cacheQRStrings.removeAll()
         UserDefaults.standard.set(cacheQRStrings, forKey: Constants.qrStringsKey)
-        historicalTableView.reloadData()
+        _historicalTableView.reloadData()
     }
 }
 
 // Delegate
-extension StatusMainViewController: NSTableViewDelegate, NSTableViewDataSource {
+extension QRMainViewController: NSTableViewDelegate, NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
         return cacheQRStrings.count
     }
@@ -206,7 +204,7 @@ extension StatusMainViewController: NSTableViewDelegate, NSTableViewDataSource {
                 }
                 cell.deleteHandler = { [weak self] button in
                     self?.deleteQRString(at: row)
-                    self?.historicalTableView.reloadData()
+                    self?._historicalTableView.reloadData()
                 }
             }
             return cell

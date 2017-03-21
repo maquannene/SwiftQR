@@ -9,6 +9,7 @@
  */
 
 #import <Cocoa/Cocoa.h>
+#import <Carbon/Carbon.h>
 
 //a convenient typedef for the required signature of a hotkey block callback
 typedef void (^DDHotKeyTask)(NSEvent*);
@@ -90,4 +91,3 @@ typedef void (^DDHotKeyTask)(NSEvent*);
 - (NSSet *)registeredHotKeys;
 
 @end
-
