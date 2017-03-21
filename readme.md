@@ -5,4 +5,4 @@
 
 - Mac OS X 10.11+
 
-## For more new feature，please download branch develop
+## For more new feature，please clone branch develop
