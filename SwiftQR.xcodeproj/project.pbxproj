@@ -490,7 +490,7 @@
 				DEVELOPMENT_TEAM = 47A7JUUJ9E;
 				INFOPLIST_FILE = SwiftQR/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "--.SwiftQR";
+				PRODUCT_BUNDLE_IDENTIFIER = maquannene.SwiftQR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SwiftQR/SwiftQR-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
@@ -506,7 +506,7 @@
 				DEVELOPMENT_TEAM = 47A7JUUJ9E;
 				INFOPLIST_FILE = SwiftQR/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "--.SwiftQR";
+				PRODUCT_BUNDLE_IDENTIFIER = maquannene.SwiftQR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SwiftQR/SwiftQR-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
