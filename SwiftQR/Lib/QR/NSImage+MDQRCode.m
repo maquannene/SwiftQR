@@ -22,7 +22,7 @@
 //
 
 #import "NSImage+MDQRCode.h"
-#import "qrencode.h"
+#import <libqrencode/qrencode.h>
 
 @implementation NSImage (MDQRCode)
 

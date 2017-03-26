@@ -4,6 +4,7 @@ target 'SwiftQR' do
 
 pod 'SnapKit'
 pod 'Then', '~> 2.1'
+pod 'libqrencode', :git => 'https://github.com/maquannene/libqrencode-forXcode.git'
 
 end
 

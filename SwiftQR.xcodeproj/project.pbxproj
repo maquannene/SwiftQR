@@ -11,17 +11,10 @@
 		5CF522EE1E76D077006B599E /* DDHotKeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF522E91E76D077006B599E /* DDHotKeyCenter.m */; };
 		5CF522EF1E76D077006B599E /* DDHotKeyTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF522EB1E76D077006B599E /* DDHotKeyTextField.m */; };
 		5CF522F01E76D077006B599E /* DDHotKeyUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF522ED1E76D077006B599E /* DDHotKeyUtilities.m */; };
-		5CF522F31E76D0E9006B599E /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF522F11E76D0DB006B599E /* AppKit.framework */; };
 		5CF522F41E76D0F1006B599E /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF522F11E76D0DB006B599E /* AppKit.framework */; };
 		5CF522F51E76D0F1006B599E /* AppKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF522F11E76D0DB006B599E /* AppKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BCD218B1A49BF591E14D7279 /* Pods_SwiftQR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3094AAEF794A3C7E4E9345E /* Pods_SwiftQR.framework */; };
-		D42B54D31E72CFD500D157AE /* bitstream.c in Sources */ = {isa = PBXBuildFile; fileRef = D42B54C31E72CFD500D157AE /* bitstream.c */; };
-		D42B54D41E72CFD500D157AE /* mask.c in Sources */ = {isa = PBXBuildFile; fileRef = D42B54C51E72CFD500D157AE /* mask.c */; };
-		D42B54D51E72CFD500D157AE /* qrencode.c in Sources */ = {isa = PBXBuildFile; fileRef = D42B54C71E72CFD500D157AE /* qrencode.c */; };
-		D42B54D61E72CFD500D157AE /* qrinput.c in Sources */ = {isa = PBXBuildFile; fileRef = D42B54C91E72CFD500D157AE /* qrinput.c */; };
-		D42B54D71E72CFD500D157AE /* qrspec.c in Sources */ = {isa = PBXBuildFile; fileRef = D42B54CB1E72CFD500D157AE /* qrspec.c */; };
-		D42B54D81E72CFD500D157AE /* rscode.c in Sources */ = {isa = PBXBuildFile; fileRef = D42B54CD1E72CFD500D157AE /* rscode.c */; };
-		D42B54D91E72CFD500D157AE /* split.c in Sources */ = {isa = PBXBuildFile; fileRef = D42B54CF1E72CFD500D157AE /* split.c */; };
+		D40DBFD61E8786BF0057CADB /* KeyCodeParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40DBFD51E8786BF0057CADB /* KeyCodeParse.swift */; };
 		D42B54DA1E72CFD500D157AE /* NSImage+MDQRCode.m in Sources */ = {isa = PBXBuildFile; fileRef = D42B54D21E72CFD500D157AE /* NSImage+MDQRCode.m */; };
 		D42B54E01E72D28200D157AE /* QRMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42B54DF1E72D28200D157AE /* QRMainViewController.swift */; };
 		D42B54E41E742D4700D157AE /* QRHistoricalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42B54E31E742D4700D157AE /* QRHistoricalCell.swift */; };
@@ -33,7 +26,6 @@
 		D4C1793C1E72CE5D007419B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C1793B1E72CE5D007419B9 /* AppDelegate.swift */; };
 		D4C179401E72CE5D007419B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4C1793F1E72CE5D007419B9 /* Assets.xcassets */; };
 		D4C179431E72CE5D007419B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4C179411E72CE5D007419B9 /* Main.storyboard */; };
-		D4C4E70B1E7ADC8C00D37F58 /* KeyCodeParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C4E70A1E7ADC8C00D37F58 /* KeyCodeParse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -62,20 +54,7 @@
 		5CF522ED1E76D077006B599E /* DDHotKeyUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHotKeyUtilities.m; sourceTree = "<group>"; };
 		5CF522F11E76D0DB006B599E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		A3094AAEF794A3C7E4E9345E /* Pods_SwiftQR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftQR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D42B54C31E72CFD500D157AE /* bitstream.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bitstream.c; sourceTree = "<group>"; };
-		D42B54C41E72CFD500D157AE /* bitstream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bitstream.h; sourceTree = "<group>"; };
-		D42B54C51E72CFD500D157AE /* mask.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mask.c; sourceTree = "<group>"; };
-		D42B54C61E72CFD500D157AE /* mask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mask.h; sourceTree = "<group>"; };
-		D42B54C71E72CFD500D157AE /* qrencode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = qrencode.c; sourceTree = "<group>"; };
-		D42B54C81E72CFD500D157AE /* qrencode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qrencode.h; sourceTree = "<group>"; };
-		D42B54C91E72CFD500D157AE /* qrinput.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = qrinput.c; sourceTree = "<group>"; };
-		D42B54CA1E72CFD500D157AE /* qrinput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qrinput.h; sourceTree = "<group>"; };
-		D42B54CB1E72CFD500D157AE /* qrspec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = qrspec.c; sourceTree = "<group>"; };
-		D42B54CC1E72CFD500D157AE /* qrspec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qrspec.h; sourceTree = "<group>"; };
-		D42B54CD1E72CFD500D157AE /* rscode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rscode.c; sourceTree = "<group>"; };
-		D42B54CE1E72CFD500D157AE /* rscode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rscode.h; sourceTree = "<group>"; };
-		D42B54CF1E72CFD500D157AE /* split.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = split.c; sourceTree = "<group>"; };
-		D42B54D01E72CFD500D157AE /* split.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = split.h; sourceTree = "<group>"; };
+		D40DBFD51E8786BF0057CADB /* KeyCodeParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyCodeParse.swift; sourceTree = "<group>"; };
 		D42B54D11E72CFD500D157AE /* NSImage+MDQRCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+MDQRCode.h"; sourceTree = "<group>"; };
 		D42B54D21E72CFD500D157AE /* NSImage+MDQRCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+MDQRCode.m"; sourceTree = "<group>"; };
 		D42B54DE1E72D04B00D157AE /* SwiftQR-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SwiftQR-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -91,7 +70,6 @@
 		D4C1793F1E72CE5D007419B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D4C179421E72CE5D007419B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D4C179441E72CE5D007419B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D4C4E70A1E7ADC8C00D37F58 /* KeyCodeParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyCodeParse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +78,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CF522F41E76D0F1006B599E /* AppKit.framework in Frameworks */,
-				5CF522F31E76D0E9006B599E /* AppKit.framework in Frameworks */,
 				BCD218B1A49BF591E14D7279 /* Pods_SwiftQR.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -130,10 +107,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D40DBFD41E8786BF0057CADB /* KeyCode */ = {
+			isa = PBXGroup;
+			children = (
+				D40DBFD51E8786BF0057CADB /* KeyCodeParse.swift */,
+			);
+			path = KeyCode;
+			sourceTree = "<group>";
+		};
 		D42B54C01E72CFCA00D157AE /* Lib */ = {
 			isa = PBXGroup;
 			children = (
-				D4C4E7091E7ADC8000D37F58 /* Extension */,
+				D40DBFD41E8786BF0057CADB /* KeyCode */,
 				5CF522E71E76D077006B599E /* DDHotKey */,
 				D42B54C11E72CFD500D157AE /* QR */,
 			);
@@ -144,32 +129,10 @@
 		D42B54C11E72CFD500D157AE /* QR */ = {
 			isa = PBXGroup;
 			children = (
-				D42B54C21E72CFD500D157AE /* libqrencode */,
 				D42B54D11E72CFD500D157AE /* NSImage+MDQRCode.h */,
 				D42B54D21E72CFD500D157AE /* NSImage+MDQRCode.m */,
 			);
 			path = QR;
-			sourceTree = "<group>";
-		};
-		D42B54C21E72CFD500D157AE /* libqrencode */ = {
-			isa = PBXGroup;
-			children = (
-				D42B54C31E72CFD500D157AE /* bitstream.c */,
-				D42B54C41E72CFD500D157AE /* bitstream.h */,
-				D42B54C51E72CFD500D157AE /* mask.c */,
-				D42B54C61E72CFD500D157AE /* mask.h */,
-				D42B54C71E72CFD500D157AE /* qrencode.c */,
-				D42B54C81E72CFD500D157AE /* qrencode.h */,
-				D42B54C91E72CFD500D157AE /* qrinput.c */,
-				D42B54CA1E72CFD500D157AE /* qrinput.h */,
-				D42B54CB1E72CFD500D157AE /* qrspec.c */,
-				D42B54CC1E72CFD500D157AE /* qrspec.h */,
-				D42B54CD1E72CFD500D157AE /* rscode.c */,
-				D42B54CE1E72CFD500D157AE /* rscode.h */,
-				D42B54CF1E72CFD500D157AE /* split.c */,
-				D42B54D01E72CFD500D157AE /* split.h */,
-			);
-			path = libqrencode;
 			sourceTree = "<group>";
 		};
 		D4C1792F1E72CE5D007419B9 = {
@@ -209,14 +172,6 @@
 				D4C179441E72CE5D007419B9 /* Info.plist */,
 			);
 			path = SwiftQR;
-			sourceTree = "<group>";
-		};
-		D4C4E7091E7ADC8000D37F58 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				D4C4E70A1E7ADC8C00D37F58 /* KeyCodeParse.swift */,
-			);
-			path = Extension;
 			sourceTree = "<group>";
 		};
 		FCEF8BA68AC5224A38B9CF74 /* Pods */ = {
@@ -355,22 +310,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D42B54D81E72CFD500D157AE /* rscode.c in Sources */,
-				D42B54D31E72CFD500D157AE /* bitstream.c in Sources */,
 				D45C46791E7D608500B3FB3A /* HotKeySettingWindowController.swift in Sources */,
 				5CF522EF1E76D077006B599E /* DDHotKeyTextField.m in Sources */,
-				D42B54D91E72CFD500D157AE /* split.c in Sources */,
-				D42B54D51E72CFD500D157AE /* qrencode.c in Sources */,
-				D4C4E70B1E7ADC8C00D37F58 /* KeyCodeParse.swift in Sources */,
 				5CF522EE1E76D077006B599E /* DDHotKeyCenter.m in Sources */,
 				5C4802121E77A3110041153F /* StatusItemManange.swift in Sources */,
 				5CF522F01E76D077006B599E /* DDHotKeyUtilities.m in Sources */,
 				D4C1793C1E72CE5D007419B9 /* AppDelegate.swift in Sources */,
 				D45C46861E7D858900B3FB3A /* HotKeyCenter.swift in Sources */,
 				D42B54DA1E72CFD500D157AE /* NSImage+MDQRCode.m in Sources */,
-				D42B54D71E72CFD500D157AE /* qrspec.c in Sources */,
-				D42B54D41E72CFD500D157AE /* mask.c in Sources */,
-				D42B54D61E72CFD500D157AE /* qrinput.c in Sources */,
+				D40DBFD61E8786BF0057CADB /* KeyCodeParse.swift in Sources */,
 				D45C467D1E7D713A00B3FB3A /* HotKeySettingViewController.swift in Sources */,
 				D42B54E41E742D4700D157AE /* QRHistoricalCell.swift in Sources */,
 				D42B54E01E72D28200D157AE /* QRMainViewController.swift in Sources */,
@@ -488,8 +436,23 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 47A7JUUJ9E;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = SwiftQR/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SnapKit/SnapKit.framework/Headers\"",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Then/Then.framework/Headers\"",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"SnapKit\"",
+					"-framework",
+					"\"Then\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = maquannene.SwiftQR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SwiftQR/SwiftQR-Bridging-Header.h";
@@ -504,8 +467,23 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 47A7JUUJ9E;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = SwiftQR/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SnapKit/SnapKit.framework/Headers\"",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Then/Then.framework/Headers\"",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"SnapKit\"",
+					"-framework",
+					"\"Then\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = maquannene.SwiftQR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SwiftQR/SwiftQR-Bridging-Header.h";
