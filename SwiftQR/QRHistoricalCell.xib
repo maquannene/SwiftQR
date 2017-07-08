@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -14,7 +14,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HOC-kw-cbf">
-                    <rect key="frame" x="5" y="2" width="544" height="22"/>
+                    <rect key="frame" x="5" y="2" width="553" height="22"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="enJ-wb-Arw">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -22,8 +22,8 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ld2-4U-y81">
-                    <rect key="frame" x="548" y="-4" width="69" height="32"/>
-                    <buttonCell key="cell" type="push" title="App." bezelStyle="rounded" image="405F74BA-F60D-41B5-B69C-B90DF305EFA4" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pVk-Pi-koI">
+                    <rect key="frame" x="557" y="-4" width="64" height="32"/>
+                    <buttonCell key="cell" type="push" title="Edit" bezelStyle="rounded" image="buttonCell:pVk-Pi-koI:image" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pVk-Pi-koI">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -32,8 +32,8 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AL3-pk-DEf">
-                    <rect key="frame" x="610" y="-4" width="64" height="32"/>
-                    <buttonCell key="cell" type="push" title="Del." bezelStyle="rounded" image="036D0D42-02FE-454C-8ACD-2D98F4818589" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jHP-ds-CPQ">
+                    <rect key="frame" x="614" y="-4" width="60" height="32"/>
+                    <buttonCell key="cell" type="push" title="Del" bezelStyle="rounded" image="buttonCell:jHP-ds-CPQ:image" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jHP-ds-CPQ">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -53,15 +53,13 @@
                 <constraint firstItem="ld2-4U-y81" firstAttribute="leading" secondItem="HOC-kw-cbf" secondAttribute="trailing" constant="5" id="eYw-wn-Aed"/>
             </constraints>
             <connections>
-                <outlet property="button" destination="ld2-4U-y81" id="xal-rn-q5A"/>
                 <outlet property="qrTextField" destination="HOC-kw-cbf" id="izy-3i-fVi"/>
-                <outlet property="textField" destination="HOC-kw-cbf" id="Qab-o4-pp7"/>
             </connections>
             <point key="canvasLocation" x="60.5" y="97"/>
         </tableCellView>
     </objects>
     <resources>
-        <image name="036D0D42-02FE-454C-8ACD-2D98F4818589" width="1" height="1">
+        <image name="buttonCell:jHP-ds-CPQ:image" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -112,7 +110,7 @@ ALAAswC1ALcAuQC7AMAA1wDZANsJiwmQCZsJpAm3CbsJxgnPCdQJ3AnfCeQJ8wn3Cf4KBgoTChgKGgoc
 CiEKKQosCjEKOQo8Ck4KUQpWAAAAAAAAAgEAAAAAAAAAQQAAAAAAAAAAAAAAAAAAClg
 </mutableData>
         </image>
-        <image name="405F74BA-F60D-41B5-B69C-B90DF305EFA4" width="1" height="1">
+        <image name="buttonCell:pVk-Pi-koI:image" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

@@ -10,8 +10,7 @@ import Cocoa
 
 class QRHistoricalCell: NSTableCellView {
     @IBOutlet weak var qrTextField: NSTextField!
-    @IBOutlet weak var button: NSButton!
-    var applyHandler: ((_ button: NSButton) -> Void)?
+    var editHandler: ((_ button: NSButton) -> Void)?
     var deleteHandler: ((_ button: NSButton) -> Void)?
     
     override func awakeFromNib() {
@@ -20,7 +19,7 @@ class QRHistoricalCell: NSTableCellView {
     }
     
     @IBAction func buttonAction(_ sender: NSButton) {
-        applyHandler?(sender)
+        editHandler?(sender)
     }
     
     @IBAction func deleteButtonAction(_ sender: NSButton) {
