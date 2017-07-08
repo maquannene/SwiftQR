@@ -182,9 +182,23 @@ extension QRMainViewController {
     }
     
     func cleanAllCacheAction(button: NSButton) {
-        cacheQRStrings.removeAll()
-        UserDefaults.standard.set(cacheQRStrings, forKey: Constants.qrStringsKey)
-        _historicalTableView.reloadData()
+        
+        let alert = NSAlert(error: NSError(domain: "123", code: 0, userInfo: nil))
+        alert.messageText = "Warning"
+        alert.informativeText = "Confirm clean history?"
+        alert.alertStyle = .warning
+        alert.addButton(withTitle: "Confirm")
+        alert.addButton(withTitle: "Clean")
+        let action = alert.runModal()
+        if action == NSAlertFirstButtonReturn {
+            
+        }
+        
+        if action == NSAlertSecondButtonReturn {
+            cacheQRStrings.removeAll()
+            UserDefaults.standard.set(cacheQRStrings, forKey: Constants.qrStringsKey)
+            _historicalTableView.reloadData()
+        }
     }
 }
 
@@ -219,7 +233,6 @@ extension QRMainViewController: NSTableViewDelegate, NSTableViewDataSource {
     func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
         return false
     }
-    
 }
 
 
