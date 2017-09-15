@@ -12,7 +12,9 @@ import SnapKit
 
 private struct Constants {
     static let gap = 5
-    static let qrCodeKeyVaule = "qrCodeKeyVaule"
+    static let qrCodeKeyValues = "qrCodeKeyValues"
+    static let qrCodeKeyValueName = "name"
+    static let qrCodeKeyValueCode = "code"
 }
 
 class QRMainViewController: NSViewController {
@@ -25,16 +27,17 @@ class QRMainViewController: NSViewController {
     lazy var _historicalTableView: NSTableView = NSTableView(frame: NSRect.zero)
     lazy var _sqrImageView: NSImageView = NSImageView(frame: NSRect.zero)
     
-    var cacheQRCodeDic: Dictionary<String, String>
+    var cacheQRCodeKeyValues: Array<Dictionary<String, String>>
     
     override init?(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         let userDefaultes: UserDefaults = UserDefaults.standard
-        if let qrCodeDic = userDefaultes.object(forKey: Constants.qrCodeKeyVaule) as? Dictionary<String, String> {
-            cacheQRCodeDic = qrCodeDic
+        if let qrCodeKeyVaules = userDefaultes.object(forKey: Constants.qrCodeKeyValues) as? Array<Dictionary<String, String>> {
+            cacheQRCodeKeyValues = qrCodeKeyVaules
         }
         else {
-            cacheQRCodeDic = Dictionary<String, String>()
+            cacheQRCodeKeyValues = Array<Dictionary<String, String>>()
         }
+        
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
@@ -150,19 +153,25 @@ class QRMainViewController: NSViewController {
     }
     
     fileprivate func storeQRCode(qrCode: String, qrName: String) {
-        if (cacheQRCodeDic[qrCode] as String?) != nil {
-            cacheQRCodeDic.removeValue(forKey: qrCode)
+        if let index = cacheQRCodeKeyValues.index(where: { (keyValue) -> Bool in
+            return keyValue[Constants.qrCodeKeyValueCode] == qrCode
+        }) {
+            cacheQRCodeKeyValues.remove(at: index)
         }
-        cacheQRCodeDic[qrCode] = qrName
-        if cacheQRCodeDic.count > 5 {
-            cacheQRCodeDic.remove(at: cacheQRCodeDic.endIndex)
+        cacheQRCodeKeyValues.insert([Constants.qrCodeKeyValueName : qrName, Constants.qrCodeKeyValueCode : qrCode], at: 0);
+        if cacheQRCodeKeyValues.count > 5 {
+            cacheQRCodeKeyValues.removeLast()
         }
-        UserDefaults.standard.set(cacheQRCodeDic, forKey: Constants.qrCodeKeyVaule)
+        UserDefaults.standard.set(cacheQRCodeKeyValues, forKey: Constants.qrCodeKeyValues)
     }
     
     fileprivate func deleteQRCode(with qrCode: String) {
-        cacheQRCodeDic.removeValue(forKey: qrCode)
-        UserDefaults.standard.set(cacheQRCodeDic, forKey: Constants.qrCodeKeyVaule)
+        if let index = cacheQRCodeKeyValues.index(where: { (keyValue) -> Bool in
+            return keyValue[Constants.qrCodeKeyValueCode] == qrCode
+        }) {
+            cacheQRCodeKeyValues.remove(at: index)
+        }
+        UserDefaults.standard.set(cacheQRCodeKeyValues, forKey: Constants.qrCodeKeyValues)
     }
     
 }
@@ -203,17 +212,17 @@ extension QRMainViewController {
         alert.messageText = "Warning"
         alert.informativeText = "Confirm clean history?"
         alert.alertStyle = .warning
-        alert.addButton(withTitle: "Confirm")
         alert.addButton(withTitle: "Clean")
+        alert.addButton(withTitle: "Cancel")
         let action = alert.runModal()
         if action == NSAlertFirstButtonReturn {
-            
+            cacheQRCodeKeyValues.removeAll()
+            UserDefaults.standard.set(cacheQRCodeKeyValues, forKey: Constants.qrCodeKeyValues)
+            _historicalTableView.reloadData()
         }
         
         if action == NSAlertSecondButtonReturn {
-            cacheQRCodeDic.removeAll()
-            UserDefaults.standard.set(cacheQRCodeDic, forKey: Constants.qrCodeKeyVaule)
-            _historicalTableView.reloadData()
+
         }
     }
 }
@@ -221,24 +230,26 @@ extension QRMainViewController {
 // Delegate
 extension QRMainViewController: NSTableViewDelegate, NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return cacheQRCodeDic.count
+        return cacheQRCodeKeyValues.count
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         if let cell = tableView.make(withIdentifier: QRHistoricalCell.className(), owner: self) as? QRHistoricalCell {
-            if let qrCode = Array(cacheQRCodeDic.keys)[row] as String?,
-               let qrName = Array(cacheQRCodeDic.values)[row] as String? {
-                cell.qrTextField?.stringValue = qrName
+            if let keyValues = cacheQRCodeKeyValues[row] as Dictionary<String, String>?,
+                let name = keyValues[Constants.qrCodeKeyValueName] as String?,
+                let code = keyValues[Constants.qrCodeKeyValueCode] as String? {
+                cell.qrTextField?.stringValue = name
                 cell.editHandler = { [weak self] in
-                    self?.sqrCodeInputTextFeild.stringValue = qrCode
-                    self?.sqrNameTextFeild.stringValue = qrName
+                    self?.sqrCodeInputTextFeild.stringValue = code
+                    self?.sqrNameTextFeild.stringValue = name
                     self?.generateAction(button: $0)
                 }
                 cell.deleteHandler = { [weak self] button in
-                    self?.deleteQRCode(with: qrCode)
+                    self?.deleteQRCode(with: code)
                     self?._historicalTableView.reloadData()
                 }
             }
+            
             return cell
         }
         return nil
