@@ -10,7 +10,6 @@
 		5C9A75971F6CD63100077F45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A757A1F6CD63100077F45 /* AppDelegate.swift */; };
 		5C9A75981F6CD63100077F45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C9A757B1F6CD63100077F45 /* Assets.xcassets */; };
 		5C9A75991F6CD63100077F45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C9A757C1F6CD63100077F45 /* Main.storyboard */; };
-		5C9A759A1F6CD63100077F45 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5C9A757E1F6CD63100077F45 /* Info.plist */; };
 		5C9A759B1F6CD63100077F45 /* DDHotKeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A75821F6CD63100077F45 /* DDHotKeyCenter.m */; };
 		5C9A759C1F6CD63100077F45 /* DDHotKeyTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A75841F6CD63100077F45 /* DDHotKeyTextField.m */; };
 		5C9A759D1F6CD63100077F45 /* DDHotKeyUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A75861F6CD63100077F45 /* DDHotKeyUtilities.m */; };
@@ -285,7 +284,6 @@
 				5C9A75991F6CD63100077F45 /* Main.storyboard in Resources */,
 				5C9A75A61F6CD63100077F45 /* Setting.storyboard in Resources */,
 				5C9A75A11F6CD63100077F45 /* QRHistoricalCell.xib in Resources */,
-				5C9A759A1F6CD63100077F45 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
