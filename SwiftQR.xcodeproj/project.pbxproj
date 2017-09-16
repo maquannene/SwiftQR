@@ -7,25 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5C4802121E77A3110041153F /* StatusItemManange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4802111E77A3110041153F /* StatusItemManange.swift */; };
-		5CF522EE1E76D077006B599E /* DDHotKeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF522E91E76D077006B599E /* DDHotKeyCenter.m */; };
-		5CF522EF1E76D077006B599E /* DDHotKeyTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF522EB1E76D077006B599E /* DDHotKeyTextField.m */; };
-		5CF522F01E76D077006B599E /* DDHotKeyUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF522ED1E76D077006B599E /* DDHotKeyUtilities.m */; };
+		5C9A75971F6CD63100077F45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A757A1F6CD63100077F45 /* AppDelegate.swift */; };
+		5C9A75981F6CD63100077F45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C9A757B1F6CD63100077F45 /* Assets.xcassets */; };
+		5C9A75991F6CD63100077F45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C9A757C1F6CD63100077F45 /* Main.storyboard */; };
+		5C9A759A1F6CD63100077F45 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5C9A757E1F6CD63100077F45 /* Info.plist */; };
+		5C9A759B1F6CD63100077F45 /* DDHotKeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A75821F6CD63100077F45 /* DDHotKeyCenter.m */; };
+		5C9A759C1F6CD63100077F45 /* DDHotKeyTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A75841F6CD63100077F45 /* DDHotKeyTextField.m */; };
+		5C9A759D1F6CD63100077F45 /* DDHotKeyUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A75861F6CD63100077F45 /* DDHotKeyUtilities.m */; };
+		5C9A759E1F6CD63100077F45 /* KeyCodeParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A75881F6CD63100077F45 /* KeyCodeParse.swift */; };
+		5C9A759F1F6CD63100077F45 /* DragFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A758B1F6CD63100077F45 /* DragFileView.swift */; };
+		5C9A75A01F6CD63100077F45 /* QRHistoricalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A758C1F6CD63100077F45 /* QRHistoricalCell.swift */; };
+		5C9A75A11F6CD63100077F45 /* QRHistoricalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C9A758D1F6CD63100077F45 /* QRHistoricalCell.xib */; };
+		5C9A75A21F6CD63100077F45 /* QRMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A758E1F6CD63100077F45 /* QRMainViewController.swift */; };
+		5C9A75A31F6CD63100077F45 /* HotKeyCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A75901F6CD63100077F45 /* HotKeyCenter.swift */; };
+		5C9A75A41F6CD63100077F45 /* HotKeySettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A75911F6CD63100077F45 /* HotKeySettingViewController.swift */; };
+		5C9A75A51F6CD63100077F45 /* HotKeySettingWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A75921F6CD63100077F45 /* HotKeySettingWindowController.swift */; };
+		5C9A75A61F6CD63100077F45 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C9A75931F6CD63100077F45 /* Setting.storyboard */; };
+		5C9A75A71F6CD63100077F45 /* StatusItemManange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A75951F6CD63100077F45 /* StatusItemManange.swift */; };
+		5C9A75AC1F6D08A800077F45 /* NSBezierPath+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A75AB1F6D08A800077F45 /* NSBezierPath+.swift */; };
 		5CF522F41E76D0F1006B599E /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF522F11E76D0DB006B599E /* AppKit.framework */; };
 		5CF522F51E76D0F1006B599E /* AppKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF522F11E76D0DB006B599E /* AppKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BCD218B1A49BF591E14D7279 /* Pods_SwiftQR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3094AAEF794A3C7E4E9345E /* Pods_SwiftQR.framework */; };
-		D40DBFD61E8786BF0057CADB /* KeyCodeParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40DBFD51E8786BF0057CADB /* KeyCodeParse.swift */; };
-		D42B54DA1E72CFD500D157AE /* NSImage+MDQRCode.m in Sources */ = {isa = PBXBuildFile; fileRef = D42B54D21E72CFD500D157AE /* NSImage+MDQRCode.m */; };
-		D42B54E01E72D28200D157AE /* QRMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42B54DF1E72D28200D157AE /* QRMainViewController.swift */; };
-		D42B54E41E742D4700D157AE /* QRHistoricalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42B54E31E742D4700D157AE /* QRHistoricalCell.swift */; };
-		D42B54E61E742D6300D157AE /* QRHistoricalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D42B54E51E742D6300D157AE /* QRHistoricalCell.xib */; };
-		D45C46791E7D608500B3FB3A /* HotKeySettingWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45C46781E7D608500B3FB3A /* HotKeySettingWindowController.swift */; };
-		D45C467B1E7D6D8600B3FB3A /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D45C467A1E7D6D8600B3FB3A /* Setting.storyboard */; };
-		D45C467D1E7D713A00B3FB3A /* HotKeySettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45C467C1E7D713A00B3FB3A /* HotKeySettingViewController.swift */; };
-		D45C46861E7D858900B3FB3A /* HotKeyCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45C46851E7D858900B3FB3A /* HotKeyCenter.swift */; };
-		D4C1793C1E72CE5D007419B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C1793B1E72CE5D007419B9 /* AppDelegate.swift */; };
-		D4C179401E72CE5D007419B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4C1793F1E72CE5D007419B9 /* Assets.xcassets */; };
-		D4C179431E72CE5D007419B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4C179411E72CE5D007419B9 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -45,31 +47,31 @@
 /* Begin PBXFileReference section */
 		063FD078CDB64F20CA46464A /* Pods-SwiftQR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftQR.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftQR/Pods-SwiftQR.release.xcconfig"; sourceTree = "<group>"; };
 		57A9BB018F735630B55CBCCB /* Pods-SwiftQR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftQR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftQR/Pods-SwiftQR.debug.xcconfig"; sourceTree = "<group>"; };
-		5C4802111E77A3110041153F /* StatusItemManange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItemManange.swift; sourceTree = "<group>"; };
-		5CF522E81E76D077006B599E /* DDHotKeyCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHotKeyCenter.h; sourceTree = "<group>"; };
-		5CF522E91E76D077006B599E /* DDHotKeyCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHotKeyCenter.m; sourceTree = "<group>"; };
-		5CF522EA1E76D077006B599E /* DDHotKeyTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHotKeyTextField.h; sourceTree = "<group>"; };
-		5CF522EB1E76D077006B599E /* DDHotKeyTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHotKeyTextField.m; sourceTree = "<group>"; };
-		5CF522EC1E76D077006B599E /* DDHotKeyUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHotKeyUtilities.h; sourceTree = "<group>"; };
-		5CF522ED1E76D077006B599E /* DDHotKeyUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHotKeyUtilities.m; sourceTree = "<group>"; };
+		5C9A757A1F6CD63100077F45 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5C9A757B1F6CD63100077F45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5C9A757D1F6CD63100077F45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5C9A757E1F6CD63100077F45 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C9A75811F6CD63100077F45 /* DDHotKeyCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHotKeyCenter.h; sourceTree = "<group>"; };
+		5C9A75821F6CD63100077F45 /* DDHotKeyCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHotKeyCenter.m; sourceTree = "<group>"; };
+		5C9A75831F6CD63100077F45 /* DDHotKeyTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHotKeyTextField.h; sourceTree = "<group>"; };
+		5C9A75841F6CD63100077F45 /* DDHotKeyTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHotKeyTextField.m; sourceTree = "<group>"; };
+		5C9A75851F6CD63100077F45 /* DDHotKeyUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHotKeyUtilities.h; sourceTree = "<group>"; };
+		5C9A75861F6CD63100077F45 /* DDHotKeyUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHotKeyUtilities.m; sourceTree = "<group>"; };
+		5C9A75881F6CD63100077F45 /* KeyCodeParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyCodeParse.swift; sourceTree = "<group>"; };
+		5C9A758B1F6CD63100077F45 /* DragFileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragFileView.swift; sourceTree = "<group>"; };
+		5C9A758C1F6CD63100077F45 /* QRHistoricalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRHistoricalCell.swift; sourceTree = "<group>"; };
+		5C9A758D1F6CD63100077F45 /* QRHistoricalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRHistoricalCell.xib; sourceTree = "<group>"; };
+		5C9A758E1F6CD63100077F45 /* QRMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRMainViewController.swift; sourceTree = "<group>"; };
+		5C9A75901F6CD63100077F45 /* HotKeyCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotKeyCenter.swift; sourceTree = "<group>"; };
+		5C9A75911F6CD63100077F45 /* HotKeySettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotKeySettingViewController.swift; sourceTree = "<group>"; };
+		5C9A75921F6CD63100077F45 /* HotKeySettingWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotKeySettingWindowController.swift; sourceTree = "<group>"; };
+		5C9A75931F6CD63100077F45 /* Setting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		5C9A75951F6CD63100077F45 /* StatusItemManange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItemManange.swift; sourceTree = "<group>"; };
+		5C9A75961F6CD63100077F45 /* SwiftQR-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SwiftQR-Bridging-Header.h"; sourceTree = "<group>"; };
+		5C9A75AB1F6D08A800077F45 /* NSBezierPath+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSBezierPath+.swift"; sourceTree = "<group>"; };
 		5CF522F11E76D0DB006B599E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		A3094AAEF794A3C7E4E9345E /* Pods_SwiftQR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftQR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D40DBFD51E8786BF0057CADB /* KeyCodeParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyCodeParse.swift; sourceTree = "<group>"; };
-		D42B54D11E72CFD500D157AE /* NSImage+MDQRCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+MDQRCode.h"; sourceTree = "<group>"; };
-		D42B54D21E72CFD500D157AE /* NSImage+MDQRCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+MDQRCode.m"; sourceTree = "<group>"; };
-		D42B54DE1E72D04B00D157AE /* SwiftQR-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SwiftQR-Bridging-Header.h"; sourceTree = "<group>"; };
-		D42B54DF1E72D28200D157AE /* QRMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRMainViewController.swift; sourceTree = "<group>"; };
-		D42B54E31E742D4700D157AE /* QRHistoricalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRHistoricalCell.swift; sourceTree = "<group>"; };
-		D42B54E51E742D6300D157AE /* QRHistoricalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRHistoricalCell.xib; sourceTree = "<group>"; };
-		D45C46781E7D608500B3FB3A /* HotKeySettingWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotKeySettingWindowController.swift; sourceTree = "<group>"; };
-		D45C467A1E7D6D8600B3FB3A /* Setting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
-		D45C467C1E7D713A00B3FB3A /* HotKeySettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotKeySettingViewController.swift; sourceTree = "<group>"; };
-		D45C46851E7D858900B3FB3A /* HotKeyCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotKeyCenter.swift; sourceTree = "<group>"; };
 		D4C179381E72CE5D007419B9 /* SwiftQR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftQR.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D4C1793B1E72CE5D007419B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D4C1793F1E72CE5D007419B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D4C179421E72CE5D007419B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D4C179441E72CE5D007419B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,17 +87,97 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5CF522E71E76D077006B599E /* DDHotKey */ = {
+		5C9A75791F6CD63100077F45 /* SwiftQR */ = {
 			isa = PBXGroup;
 			children = (
-				5CF522E81E76D077006B599E /* DDHotKeyCenter.h */,
-				5CF522E91E76D077006B599E /* DDHotKeyCenter.m */,
-				5CF522EA1E76D077006B599E /* DDHotKeyTextField.h */,
-				5CF522EB1E76D077006B599E /* DDHotKeyTextField.m */,
-				5CF522EC1E76D077006B599E /* DDHotKeyUtilities.h */,
-				5CF522ED1E76D077006B599E /* DDHotKeyUtilities.m */,
+				5C9A757A1F6CD63100077F45 /* AppDelegate.swift */,
+				5C9A757B1F6CD63100077F45 /* Assets.xcassets */,
+				5C9A757C1F6CD63100077F45 /* Main.storyboard */,
+				5C9A757E1F6CD63100077F45 /* Info.plist */,
+				5C9A75961F6CD63100077F45 /* SwiftQR-Bridging-Header.h */,
+				5C9A757F1F6CD63100077F45 /* Lib */,
+				5C9A758A1F6CD63100077F45 /* Main */,
+				5C9A758F1F6CD63100077F45 /* Setting */,
+				5C9A75941F6CD63100077F45 /* StatusBar */,
+			);
+			path = SwiftQR;
+			sourceTree = "<group>";
+		};
+		5C9A757F1F6CD63100077F45 /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				5C9A75AA1F6D089100077F45 /* Extension */,
+				5C9A75801F6CD63100077F45 /* DDHotKey */,
+				5C9A75871F6CD63100077F45 /* KeyCode */,
+				5C9A75891F6CD63100077F45 /* QR */,
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
+		5C9A75801F6CD63100077F45 /* DDHotKey */ = {
+			isa = PBXGroup;
+			children = (
+				5C9A75811F6CD63100077F45 /* DDHotKeyCenter.h */,
+				5C9A75821F6CD63100077F45 /* DDHotKeyCenter.m */,
+				5C9A75831F6CD63100077F45 /* DDHotKeyTextField.h */,
+				5C9A75841F6CD63100077F45 /* DDHotKeyTextField.m */,
+				5C9A75851F6CD63100077F45 /* DDHotKeyUtilities.h */,
+				5C9A75861F6CD63100077F45 /* DDHotKeyUtilities.m */,
 			);
 			path = DDHotKey;
+			sourceTree = "<group>";
+		};
+		5C9A75871F6CD63100077F45 /* KeyCode */ = {
+			isa = PBXGroup;
+			children = (
+				5C9A75881F6CD63100077F45 /* KeyCodeParse.swift */,
+			);
+			path = KeyCode;
+			sourceTree = "<group>";
+		};
+		5C9A75891F6CD63100077F45 /* QR */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = QR;
+			sourceTree = "<group>";
+		};
+		5C9A758A1F6CD63100077F45 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				5C9A758B1F6CD63100077F45 /* DragFileView.swift */,
+				5C9A758C1F6CD63100077F45 /* QRHistoricalCell.swift */,
+				5C9A758D1F6CD63100077F45 /* QRHistoricalCell.xib */,
+				5C9A758E1F6CD63100077F45 /* QRMainViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		5C9A758F1F6CD63100077F45 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				5C9A75901F6CD63100077F45 /* HotKeyCenter.swift */,
+				5C9A75911F6CD63100077F45 /* HotKeySettingViewController.swift */,
+				5C9A75921F6CD63100077F45 /* HotKeySettingWindowController.swift */,
+				5C9A75931F6CD63100077F45 /* Setting.storyboard */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		5C9A75941F6CD63100077F45 /* StatusBar */ = {
+			isa = PBXGroup;
+			children = (
+				5C9A75951F6CD63100077F45 /* StatusItemManange.swift */,
+			);
+			path = StatusBar;
+			sourceTree = "<group>";
+		};
+		5C9A75AA1F6D089100077F45 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				5C9A75AB1F6D08A800077F45 /* NSBezierPath+.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		C5FD38BE5CBBB5091DECE105 /* Frameworks */ = {
@@ -107,39 +189,10 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D40DBFD41E8786BF0057CADB /* KeyCode */ = {
-			isa = PBXGroup;
-			children = (
-				D40DBFD51E8786BF0057CADB /* KeyCodeParse.swift */,
-			);
-			path = KeyCode;
-			sourceTree = "<group>";
-		};
-		D42B54C01E72CFCA00D157AE /* Lib */ = {
-			isa = PBXGroup;
-			children = (
-				D40DBFD41E8786BF0057CADB /* KeyCode */,
-				5CF522E71E76D077006B599E /* DDHotKey */,
-				D42B54C11E72CFD500D157AE /* QR */,
-			);
-			name = Lib;
-			path = SwiftQR/Lib;
-			sourceTree = "<group>";
-		};
-		D42B54C11E72CFD500D157AE /* QR */ = {
-			isa = PBXGroup;
-			children = (
-				D42B54D11E72CFD500D157AE /* NSImage+MDQRCode.h */,
-				D42B54D21E72CFD500D157AE /* NSImage+MDQRCode.m */,
-			);
-			path = QR;
-			sourceTree = "<group>";
-		};
 		D4C1792F1E72CE5D007419B9 = {
 			isa = PBXGroup;
 			children = (
-				D42B54C01E72CFCA00D157AE /* Lib */,
-				D4C1793A1E72CE5D007419B9 /* SwiftQR */,
+				5C9A75791F6CD63100077F45 /* SwiftQR */,
 				D4C179391E72CE5D007419B9 /* Products */,
 				FCEF8BA68AC5224A38B9CF74 /* Pods */,
 				C5FD38BE5CBBB5091DECE105 /* Frameworks */,
@@ -152,26 +205,6 @@
 				D4C179381E72CE5D007419B9 /* SwiftQR.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		D4C1793A1E72CE5D007419B9 /* SwiftQR */ = {
-			isa = PBXGroup;
-			children = (
-				D4C1793B1E72CE5D007419B9 /* AppDelegate.swift */,
-				5C4802111E77A3110041153F /* StatusItemManange.swift */,
-				D45C467A1E7D6D8600B3FB3A /* Setting.storyboard */,
-				D45C46781E7D608500B3FB3A /* HotKeySettingWindowController.swift */,
-				D45C467C1E7D713A00B3FB3A /* HotKeySettingViewController.swift */,
-				D45C46851E7D858900B3FB3A /* HotKeyCenter.swift */,
-				D42B54DF1E72D28200D157AE /* QRMainViewController.swift */,
-				D42B54E31E742D4700D157AE /* QRHistoricalCell.swift */,
-				D42B54E51E742D6300D157AE /* QRHistoricalCell.xib */,
-				D42B54DE1E72D04B00D157AE /* SwiftQR-Bridging-Header.h */,
-				D4C1793F1E72CE5D007419B9 /* Assets.xcassets */,
-				D4C179411E72CE5D007419B9 /* Main.storyboard */,
-				D4C179441E72CE5D007419B9 /* Info.plist */,
-			);
-			path = SwiftQR;
 			sourceTree = "<group>";
 		};
 		FCEF8BA68AC5224A38B9CF74 /* Pods */ = {
@@ -248,10 +281,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D42B54E61E742D6300D157AE /* QRHistoricalCell.xib in Resources */,
-				D4C179401E72CE5D007419B9 /* Assets.xcassets in Resources */,
-				D4C179431E72CE5D007419B9 /* Main.storyboard in Resources */,
-				D45C467B1E7D6D8600B3FB3A /* Setting.storyboard in Resources */,
+				5C9A75981F6CD63100077F45 /* Assets.xcassets in Resources */,
+				5C9A75991F6CD63100077F45 /* Main.storyboard in Resources */,
+				5C9A75A61F6CD63100077F45 /* Setting.storyboard in Resources */,
+				5C9A75A11F6CD63100077F45 /* QRHistoricalCell.xib in Resources */,
+				5C9A759A1F6CD63100077F45 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,28 +344,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D45C46791E7D608500B3FB3A /* HotKeySettingWindowController.swift in Sources */,
-				5CF522EF1E76D077006B599E /* DDHotKeyTextField.m in Sources */,
-				5CF522EE1E76D077006B599E /* DDHotKeyCenter.m in Sources */,
-				5C4802121E77A3110041153F /* StatusItemManange.swift in Sources */,
-				5CF522F01E76D077006B599E /* DDHotKeyUtilities.m in Sources */,
-				D4C1793C1E72CE5D007419B9 /* AppDelegate.swift in Sources */,
-				D45C46861E7D858900B3FB3A /* HotKeyCenter.swift in Sources */,
-				D42B54DA1E72CFD500D157AE /* NSImage+MDQRCode.m in Sources */,
-				D40DBFD61E8786BF0057CADB /* KeyCodeParse.swift in Sources */,
-				D45C467D1E7D713A00B3FB3A /* HotKeySettingViewController.swift in Sources */,
-				D42B54E41E742D4700D157AE /* QRHistoricalCell.swift in Sources */,
-				D42B54E01E72D28200D157AE /* QRMainViewController.swift in Sources */,
+				5C9A75A71F6CD63100077F45 /* StatusItemManange.swift in Sources */,
+				5C9A759F1F6CD63100077F45 /* DragFileView.swift in Sources */,
+				5C9A75AC1F6D08A800077F45 /* NSBezierPath+.swift in Sources */,
+				5C9A759C1F6CD63100077F45 /* DDHotKeyTextField.m in Sources */,
+				5C9A759E1F6CD63100077F45 /* KeyCodeParse.swift in Sources */,
+				5C9A75A31F6CD63100077F45 /* HotKeyCenter.swift in Sources */,
+				5C9A75A51F6CD63100077F45 /* HotKeySettingWindowController.swift in Sources */,
+				5C9A75A01F6CD63100077F45 /* QRHistoricalCell.swift in Sources */,
+				5C9A75A41F6CD63100077F45 /* HotKeySettingViewController.swift in Sources */,
+				5C9A75A21F6CD63100077F45 /* QRMainViewController.swift in Sources */,
+				5C9A759B1F6CD63100077F45 /* DDHotKeyCenter.m in Sources */,
+				5C9A759D1F6CD63100077F45 /* DDHotKeyUtilities.m in Sources */,
+				5C9A75971F6CD63100077F45 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		D4C179411E72CE5D007419B9 /* Main.storyboard */ = {
+		5C9A757C1F6CD63100077F45 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D4C179421E72CE5D007419B9 /* Base */,
+				5C9A757D1F6CD63100077F45 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

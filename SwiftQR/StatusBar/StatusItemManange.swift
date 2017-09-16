@@ -45,13 +45,13 @@ class StatusItemManange {
     fileprivate func showRightClickMenu(on view: NSView) {
         NSMenu(title: "Setting").with {
             let item = NSMenuItem(title: RightMouseMenu.hotkey.rawValue,
-                                  action: #selector(self.showSettingContoller(sender:)),
+                                  action: #selector(showSettingContoller(sender:)),
                                   keyEquivalent: HotKeyCenter.shared.hotKey.keyCodeReadable.lowercased()).with { $0.target = self }
             item.keyEquivalentModifierMask = [.option]
             $0.addItem(item)
             $0.addItem(NSMenuItem.separator())
             $0.addItem(NSMenuItem(title: RightMouseMenu.quit.rawValue,
-                                  action: #selector(self.quitAppAction(sender:)),
+                                  action: #selector(quitAppAction(sender:)),
                                   keyEquivalent: RightMouseMenu.quit.rawValue).with { $0.target = self })
             }.do {
                 _statusItem.popUpMenu($0)
