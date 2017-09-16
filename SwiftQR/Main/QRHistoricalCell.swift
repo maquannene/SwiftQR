@@ -9,6 +9,7 @@
 import Cocoa
 
 class QRHistoricalCell: NSTableCellView {
+    
     @IBOutlet weak var qrTextField: NSTextField!
     var editHandler: ((_ button: NSButton) -> Void)?
     var deleteHandler: ((_ button: NSButton) -> Void)?

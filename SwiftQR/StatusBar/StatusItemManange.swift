@@ -17,7 +17,8 @@ class StatusItemManange {
     
     fileprivate var _statusItem: NSStatusItem = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength)
     fileprivate var _popver: NSPopover = NSPopover()
-    fileprivate var _settingWindowController:HotKeySettingWindowController?
+    fileprivate var _mainViewController = QRMainViewController()
+    fileprivate var _settingWindowController: HotKeySettingWindowController?
     
     init() {
         _ = HotKeyCenter.shared.regist(observer: self, selector: #selector(self.hotKeyAction(event:)))
@@ -30,7 +31,7 @@ class StatusItemManange {
         }
         
         _popver.do {
-            $0.contentViewController = QRMainViewController()
+            $0.contentViewController = _mainViewController
             $0.behavior = .transient
         }
     }
@@ -45,13 +46,13 @@ class StatusItemManange {
     fileprivate func showRightClickMenu(on view: NSView) {
         NSMenu(title: "Setting").with {
             let item = NSMenuItem(title: RightMouseMenu.hotkey.rawValue,
-                                  action: #selector(self.showSettingContoller(sender:)),
+                                  action: #selector(showSettingContoller(sender:)),
                                   keyEquivalent: HotKeyCenter.shared.hotKey.keyCodeReadable.lowercased()).with { $0.target = self }
             item.keyEquivalentModifierMask = [.option]
             $0.addItem(item)
             $0.addItem(NSMenuItem.separator())
             $0.addItem(NSMenuItem(title: RightMouseMenu.quit.rawValue,
-                                  action: #selector(self.quitAppAction(sender:)),
+                                  action: #selector(quitAppAction(sender:)),
                                   keyEquivalent: RightMouseMenu.quit.rawValue).with { $0.target = self })
             }.do {
                 _statusItem.popUpMenu($0)
@@ -61,10 +62,11 @@ class StatusItemManange {
 
 // MARK: - Public
 extension StatusItemManange {
+    
 }
 
 // MARK: - Action
-extension StatusItemManange {
+private extension StatusItemManange {
     
     /// statusItemClick
     @objc func statusItemAction(button: NSButton) {

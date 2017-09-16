@@ -9,7 +9,6 @@
 #ifndef SwiftQR_Bridging_Header_h
 #define SwiftQR_Bridging_Header_h
 
-#import "NSImage+MDQRCode.h"
 #import "DDHotKeyCenter.h"
 
 #endif /* SwiftQR_Bridging_Header_h */

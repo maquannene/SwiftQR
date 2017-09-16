@@ -83,7 +83,7 @@ final class HotKeyCenter {
                modifierFlags: HotKeyCenter._defaultModifierFlags)
     }
     
-    public func regist(observer: AnyObject, selector: Selector) {
+    public func regist(observer: AnyObject, selector: Selector) -> Void {
         _observer = observer
         _selector = selector
         if let hotKey = _hotKey as HotKey? {
@@ -98,7 +98,7 @@ final class HotKeyCenter {
         }
     }
     
-    public func regist(keyCode: UInt16, modifierFlags: NSEventModifierFlags) {
+    public func regist(keyCode: UInt16, modifierFlags: NSEventModifierFlags) -> Void {
         if modifierFlags.rawValue & NSEventModifierFlags.control.rawValue == 0 &&
             modifierFlags.rawValue & NSEventModifierFlags.option.rawValue == 0 &&
             modifierFlags.rawValue & NSEventModifierFlags.shift.rawValue == 0 &&
