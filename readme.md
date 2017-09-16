@@ -1,5 +1,12 @@
-# Mac QR Generate App
+# Mac QR App
 <img src="https://github.com/maquannene/SwiftQR/blob/master/image.png" width="350" style="float: left;">
+
+
+# Feature
+### 1. Generate Qr code.
+### 2. Drag to parse Qr image.
+### 3. Automatic read Qr image form paste board and parse.
+### 4. Support shortcut key.
 
 ## Download App
 
