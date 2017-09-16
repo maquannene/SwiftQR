@@ -16,21 +16,24 @@ private struct Constants {
     static let qrCodeKeyValues = "qrCodeKeyValues"
     static let qrCodeKeyValueName = "name"
     static let qrCodeKeyValueCode = "code"
+    
+    static let TIFF = "public.tiff"
 }
 
 class QRMainViewController: NSViewController {
     
-    lazy var _sqrCodeInputTextFeild: NSTextField = NSTextField(frame: NSRect.zero)
-    lazy var _sqrNameTextFeild: NSTextField = NSTextField(frame: NSRect.zero)
-    lazy var _generateButton: NSButton = NSButton(frame: NSRect.zero)
-    lazy var _saveCacheButton: NSButton = NSButton(frame: NSRect.zero)
-    lazy var _cleanCacheButton: NSButton = NSButton(frame: NSRect.zero)
-    lazy var _historicalTableView: NSTableView = NSTableView(frame: NSRect.zero)
-    lazy var _sqrImageView: NSImageView = NSImageView(frame: NSRect.zero)
+    fileprivate lazy var _sqrCodeInputTextFeild: NSTextField = NSTextField(frame: NSRect.zero)
+    fileprivate lazy var _sqrNameTextFeild: NSTextField = NSTextField(frame: NSRect.zero)
+    fileprivate lazy var _generateButton: NSButton = NSButton(frame: NSRect.zero)
+    fileprivate lazy var _saveCacheButton: NSButton = NSButton(frame: NSRect.zero)
+    fileprivate lazy var _cleanCacheButton: NSButton = NSButton(frame: NSRect.zero)
+    fileprivate lazy var _historicalTableView: NSTableView = NSTableView(frame: NSRect.zero)
+    fileprivate lazy var _sqrImageView: NSImageView = NSImageView(frame: NSRect.zero)
     
-    lazy var _dragReceiveImageFileView: DragFileView = DragFileView(frame: NSRect.zero)
+    fileprivate lazy var _dragReceiveImageFileView: DragFileView = DragFileView(frame: NSRect.zero)
+    fileprivate lazy var _decodePasteBoardQrButton: NSButton = NSButton(frame: NSRect.zero)
     
-    var _cacheQRCodeKeyValues: Array<Dictionary<String, String>>
+    fileprivate var _cacheQRCodeKeyValues: Array<Dictionary<String, String>>
     
     override init?(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         let userDefaultes: UserDefaults = UserDefaults.standard
@@ -52,6 +55,11 @@ class QRMainViewController: NSViewController {
         view = NSView()
         view.wantsLayer = true
         view.layer?.backgroundColor = NSColor.white.cgColor
+    }
+    
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        showDecodePasteBoardQrButtonIfNeed();
     }
     
     override func viewDidLoad() {
@@ -168,21 +176,28 @@ class QRMainViewController: NSViewController {
             $0.layer?.addSublayer(border)
             
             view.addSubview($0)
-            $0.receiveImageFile = { [weak self] image in
-                if let cgImage = image.toCGImage(),
-                    let decodeString = EFQRCode.recognize(image: cgImage)?.first as String? {
-                    //  显示当前
-                    self?._sqrCodeInputTextFeild.stringValue = decodeString
-                    self?._sqrNameTextFeild.stringValue = ""
-                    self?.generateAction()
-                }
-            }
+            $0.receiveImageFile = self.decodeImage
             }.do {
                 $0.snp.makeConstraints {
                     $0.top.equalTo(_sqrImageView.snp.bottom).offset(Constants.gap)
                     $0.left.equalTo(view).offset(Constants.gap)
-                    $0.right.bottom.equalTo(view).offset(-Constants.gap)
+                    $0.right.equalTo(view).offset(-Constants.gap)
                     $0.height.equalTo(48)
+                }
+        }
+        
+        _decodePasteBoardQrButton.with {
+            $0.title = "New QR In Paste Board?";
+            $0.bezelStyle = .rounded
+            $0.target = self
+            $0.action = #selector(decodeFromPasteBoard)
+            view.addSubview($0)
+            }.do {
+                $0.snp.makeConstraints {
+                    $0.top.equalTo(_dragReceiveImageFileView.snp.bottom).offset(Constants.gap)
+                    $0.left.equalTo(view).offset(Constants.gap)
+                    $0.right.bottom.equalTo(view).offset(-Constants.gap)
+                    $0.height.equalTo(24)
                 }
         }
     }
@@ -206,11 +221,42 @@ class QRMainViewController: NSViewController {
         UserDefaults.standard.set(_cacheQRCodeKeyValues, forKey: Constants.qrCodeKeyValues)
     }
     
+    fileprivate func decodeImage(image: NSImage) {
+        if let cgImage = image.toCGImage(),
+            let decodeString = EFQRCode.recognize(image: cgImage)?.first as String? {
+            //  显示当前
+            _sqrCodeInputTextFeild.stringValue = decodeString
+            _sqrNameTextFeild.stringValue = ""
+            generateAction()
+        }
+    }
+}
+
+extension QRMainViewController {
+    func showDecodePasteBoardQrButtonIfNeed() -> Void {
+        if let data = NSPasteboard.general().data(forType: Constants.TIFF),
+            let image = NSImage(data: data),
+            let cgImage = image.toCGImage(),
+            let _ = EFQRCode.recognize(image: cgImage)?.first as String?{
+            _decodePasteBoardQrButton.isHidden = false
+            _decodePasteBoardQrButton.snp.updateConstraints {
+                $0.height.equalTo(24);
+                $0.bottom.equalTo(view).offset(-Constants.gap);
+            }
+        }
+        else {
+            _decodePasteBoardQrButton.isHidden = true
+            _decodePasteBoardQrButton.snp.updateConstraints {
+                $0.height.equalTo(0);
+                $0.bottom.equalTo(view).offset(0);
+            }
+        }
+    }
 }
 
 //  Action
-extension QRMainViewController {
-    func generateAction() {
+private extension QRMainViewController {
+    @objc  func generateAction() {
         let qrCode = _sqrCodeInputTextFeild.stringValue
         if  qrCode.characters.count > 0 {
             if let image = EFQRCode.generate(content: qrCode) {
@@ -227,8 +273,8 @@ extension QRMainViewController {
             }
         }
     }
-    
-    func saveCacheAction() {
+
+    @objc func saveCacheAction() {
         let qrCode = _sqrCodeInputTextFeild.stringValue
         if  qrCode.characters.count > 0 {
             let qrName = _sqrNameTextFeild.stringValue.characters.count > 0 ? _sqrNameTextFeild.stringValue : qrCode
@@ -237,7 +283,7 @@ extension QRMainViewController {
         }
     }
     
-    func cleanAllCacheAction(button: NSButton) {
+    @objc func cleanAllCacheAction(button: NSButton) {
         
         let alert = NSAlert(error: NSError(domain: "123", code: 0, userInfo: nil))
         alert.messageText = "Warning"
@@ -254,6 +300,13 @@ extension QRMainViewController {
         
         if action == NSAlertSecondButtonReturn {
             
+        }
+    }
+    
+    @objc func decodeFromPasteBoard() {
+        if let data = NSPasteboard.general().data(forType: Constants.TIFF),
+            let image = NSImage(data: data) {
+            decodeImage(image: image)
         }
     }
 }

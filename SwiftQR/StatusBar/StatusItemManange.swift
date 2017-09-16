@@ -17,7 +17,8 @@ class StatusItemManange {
     
     fileprivate var _statusItem: NSStatusItem = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength)
     fileprivate var _popver: NSPopover = NSPopover()
-    fileprivate var _settingWindowController:HotKeySettingWindowController?
+    fileprivate var _mainViewController = QRMainViewController()
+    fileprivate var _settingWindowController: HotKeySettingWindowController?
     
     init() {
         _ = HotKeyCenter.shared.regist(observer: self, selector: #selector(self.hotKeyAction(event:)))
@@ -30,7 +31,7 @@ class StatusItemManange {
         }
         
         _popver.do {
-            $0.contentViewController = QRMainViewController()
+            $0.contentViewController = _mainViewController
             $0.behavior = .transient
         }
     }
@@ -61,10 +62,11 @@ class StatusItemManange {
 
 // MARK: - Public
 extension StatusItemManange {
+    
 }
 
 // MARK: - Action
-extension StatusItemManange {
+private extension StatusItemManange {
     
     /// statusItemClick
     @objc func statusItemAction(button: NSButton) {
