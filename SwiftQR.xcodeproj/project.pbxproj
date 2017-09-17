@@ -108,7 +108,6 @@
 				5C9A75AA1F6D089100077F45 /* Extension */,
 				5C9A75801F6CD63100077F45 /* DDHotKey */,
 				5C9A75871F6CD63100077F45 /* KeyCode */,
-				5C9A75891F6CD63100077F45 /* QR */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -132,13 +131,6 @@
 				5C9A75881F6CD63100077F45 /* KeyCodeParse.swift */,
 			);
 			path = KeyCode;
-			sourceTree = "<group>";
-		};
-		5C9A75891F6CD63100077F45 /* QR */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = QR;
 			sourceTree = "<group>";
 		};
 		5C9A758A1F6CD63100077F45 /* Main */ = {

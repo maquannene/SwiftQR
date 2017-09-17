@@ -29,7 +29,7 @@ class HotKey: NSObject, NSCoding {
             return KeyCodeParse.keyStringFrom(keyCode: keyCode, modifierFlags: modifierFlags).0
         }
     }
-
+    
     init(keyCode: UInt16, modifierFlags: NSEventModifierFlags) {
         self.keyCode = keyCode
         self.modifierFlags = modifierFlags
@@ -40,7 +40,7 @@ class HotKey: NSObject, NSCoding {
         aCoder.encode(Int32(modifierFlags.rawValue), forKey: "modifierFlags")
     }
     
-    required convenience init?(coder aDecoder: NSCoder) {        
+    required convenience init?(coder aDecoder: NSCoder) {
         let keyCode = UInt16(aDecoder.decodeInteger(forKey: "keyCode"))
         let modifierFlags = NSEventModifierFlags(rawValue: UInt(aDecoder.decodeInteger(forKey: "modifierFlags")))
         self.init(keyCode: keyCode,
@@ -49,7 +49,7 @@ class HotKey: NSObject, NSCoding {
 }
 
 final class HotKeyCenter {
- 
+    
     static let shared: HotKeyCenter = HotKeyCenter()
     private static let _defaultKeyCode = UInt16(0x09)
     private static let _defaultModifierFlags = NSEventModifierFlags.control
@@ -67,7 +67,7 @@ final class HotKeyCenter {
     
     private init() {
         if let hotKeyData = UserDefaults.standard.object(forKey: HotKeyCenter._hotKeyIndenfierKey) as? Data,
-           let hotKey = NSKeyedUnarchiver.unarchiveObject(with: hotKeyData) as? HotKey {
+            let hotKey = NSKeyedUnarchiver.unarchiveObject(with: hotKeyData) as? HotKey {
             _hotKey = hotKey
         }
         else {
