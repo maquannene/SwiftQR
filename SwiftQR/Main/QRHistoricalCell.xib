@@ -14,7 +14,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HOC-kw-cbf">
-                    <rect key="frame" x="5" y="2" width="553" height="22"/>
+                    <rect key="frame" x="5" y="2" width="523" height="22"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="enJ-wb-Arw">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -22,8 +22,8 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ld2-4U-y81">
-                    <rect key="frame" x="557" y="-4" width="64" height="32"/>
-                    <buttonCell key="cell" type="push" title="Edit" bezelStyle="rounded" image="buttonCell:pVk-Pi-koI:image" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pVk-Pi-koI">
+                    <rect key="frame" x="527" y="-4" width="74" height="32"/>
+                    <buttonCell key="cell" type="push" title="Show" bezelStyle="rounded" image="buttonCell:pVk-Pi-koI:image" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pVk-Pi-koI">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -32,8 +32,8 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AL3-pk-DEf">
-                    <rect key="frame" x="614" y="-4" width="60" height="32"/>
-                    <buttonCell key="cell" type="push" title="Del" bezelStyle="rounded" image="buttonCell:jHP-ds-CPQ:image" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jHP-ds-CPQ">
+                    <rect key="frame" x="594" y="-4" width="80" height="32"/>
+                    <buttonCell key="cell" type="push" title="Delete" bezelStyle="rounded" image="buttonCell:jHP-ds-CPQ:image" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jHP-ds-CPQ">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>

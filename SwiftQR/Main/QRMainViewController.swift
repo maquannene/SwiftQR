@@ -13,6 +13,7 @@ import EFQRCode
 
 private struct Constants {
     static let gap = 5
+    static let width = 300
     static let qrCodeKeyValues = "qrCodeKeyValues"
     static let qrCodeKeyValueName = "name"
     static let qrCodeKeyValueCode = "code"
@@ -22,16 +23,19 @@ private struct Constants {
 
 class QRMainViewController: NSViewController {
     
+    fileprivate lazy var _encodeLable: NSTextField = NSTextField(frame: NSRect.zero)
     fileprivate lazy var _sqrCodeInputTextFeild: NSTextField = NSTextField(frame: NSRect.zero)
     fileprivate lazy var _sqrNameTextFeild: NSTextField = NSTextField(frame: NSRect.zero)
     fileprivate lazy var _generateButton: NSButton = NSButton(frame: NSRect.zero)
     fileprivate lazy var _saveCacheButton: NSButton = NSButton(frame: NSRect.zero)
     fileprivate lazy var _cleanCacheButton: NSButton = NSButton(frame: NSRect.zero)
-    fileprivate lazy var _historicalTableView: NSTableView = NSTableView(frame: NSRect.zero)
     fileprivate lazy var _sqrImageView: NSImageView = NSImageView(frame: NSRect.zero)
-    
+
+    fileprivate lazy var _decodeLable: NSTextField = NSTextField(frame: NSRect.zero)
     fileprivate lazy var _dragReceiveImageFileView: DragFileView = DragFileView(frame: NSRect.zero)
     fileprivate lazy var _decodePasteBoardQrButton: NSButton = NSButton(frame: NSRect.zero)
+    
+    fileprivate lazy var _historicalTableView: NSTableView = NSTableView(frame: NSRect.zero)
     
     fileprivate var _cacheQRCodeKeyValues: Array<Dictionary<String, String>>
     
@@ -65,15 +69,29 @@ class QRMainViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        _encodeLable.with {
+            $0.isBordered = false
+            $0.isEditable = false
+            $0.focusRingType = .none
+            $0.stringValue = "Encode"
+            view.addSubview($0)
+            }.do {
+                $0.snp.makeConstraints {
+                    $0.top.left.equalTo(view).offset(Constants.gap)
+                    $0.right.equalTo(view).offset(-Constants.gap)
+                    $0.width.equalTo(Constants.width)
+                }
+        }
+        
         _sqrCodeInputTextFeild.with {
             $0.focusRingType = .none
             $0.placeholderString = "QR String"
             view.addSubview($0)
             }.do {
                 $0.snp.makeConstraints {
-                    $0.top.left.equalTo(view).offset(Constants.gap)
+                    $0.top.equalTo(_encodeLable.snp.bottom).offset(Constants.gap)
+                    $0.left.equalTo(view).offset(Constants.gap)
                     $0.right.equalTo(view).offset(-Constants.gap)
-                    $0.width.equalTo(250)
                     $0.height.equalTo(44)
                 }
         }
@@ -87,7 +105,6 @@ class QRMainViewController: NSViewController {
                     $0.top.equalTo(_sqrCodeInputTextFeild.snp.bottom).offset(Constants.gap)
                     $0.left.equalTo(view).offset(Constants.gap)
                     $0.right.equalTo(view).offset(-Constants.gap)
-                    $0.width.equalTo(250)
                     $0.height.equalTo(24)
                 }
         }
@@ -128,26 +145,10 @@ class QRMainViewController: NSViewController {
             view.addSubview($0)
             }.do {
                 $0.snp.makeConstraints {
-                    $0.top.equalTo(_saveCacheButton)
+                    $0.top.equalTo(_saveCacheButton.snp.top)
                     $0.left.equalTo(_saveCacheButton.snp.right).offset(Constants.gap)
                     $0.right.equalTo(view).offset(-Constants.gap)
                     $0.height.equalTo(_saveCacheButton)
-                }
-        }
-        
-        _historicalTableView.with {
-            let nib = NSNib(nibNamed: String(describing: QRHistoricalCell.self), bundle: Bundle.main)
-            $0.register(nib, forIdentifier: QRHistoricalCell.className())
-            $0.delegate = self
-            $0.dataSource = self
-            $0.focusRingType = .none
-            $0.addTableColumn(NSTableColumn(identifier: "First"))
-            view.addSubview($0)
-            }.do {
-                $0.snp.makeConstraints {
-                    $0.top.equalTo(_saveCacheButton.snp.bottom).offset(Constants.gap)
-                    $0.left.equalTo(view)
-                    $0.right.equalTo(view)
                 }
         }
         
@@ -157,19 +158,33 @@ class QRMainViewController: NSViewController {
             view.addSubview($0)
             }.do {
                 $0.snp.makeConstraints {
-                    $0.top.equalTo(_historicalTableView.snp.bottom)
+                    $0.top.equalTo(_cleanCacheButton.snp.bottom)
                     $0.left.equalTo(view).offset(Constants.gap)
                     $0.right.equalTo(view).offset(-Constants.gap)
                     $0.height.equalTo(0)
                 }
         }
         
+        _decodeLable.with {
+            $0.isBordered = false
+            $0.isEditable = false
+            $0.focusRingType = .none
+            $0.stringValue = "Decode"
+            view.addSubview($0)
+            }.do {
+                $0.snp.makeConstraints {
+                    $0.top.equalTo(_sqrImageView.snp.bottom).offset(Constants.gap)
+                    $0.left.equalTo(view).offset(Constants.gap)
+                    $0.right.equalTo(view).offset(-Constants.gap)
+                }
+        }
+
         _dragReceiveImageFileView.with {
             let border = CAShapeLayer()
             border.strokeColor = NSColor(red: 150 / 255.0, green: 150 / 255.0, blue: 150 / 255.0, alpha: 1).cgColor
             border.fillColor = nil
-            border.path = NSBezierPath(rect: NSRect(x: 0, y: 0, width: 250, height: 48)).CGPath
-            border.frame = NSRect(x: 0, y: 0, width: 250, height: 48)
+            border.path = NSBezierPath(rect: NSRect(x: 0, y: 0, width: Constants.width, height: 48)).CGPath
+            border.frame = NSRect(x: 0, y: 0, width: Constants.width, height: 48)
             border.lineWidth = 1
             border.lineCap = "square"
             border.lineDashPattern = [8, 4]
@@ -179,7 +194,7 @@ class QRMainViewController: NSViewController {
             $0.receiveImageFile = self.decodeImage
             }.do {
                 $0.snp.makeConstraints {
-                    $0.top.equalTo(_sqrImageView.snp.bottom).offset(Constants.gap)
+                    $0.top.equalTo(_decodeLable.snp.bottom).offset(Constants.gap)
                     $0.left.equalTo(view).offset(Constants.gap)
                     $0.right.equalTo(view).offset(-Constants.gap)
                     $0.height.equalTo(48)
@@ -196,8 +211,25 @@ class QRMainViewController: NSViewController {
                 $0.snp.makeConstraints {
                     $0.top.equalTo(_dragReceiveImageFileView.snp.bottom).offset(Constants.gap)
                     $0.left.equalTo(view).offset(Constants.gap)
-                    $0.right.bottom.equalTo(view).offset(-Constants.gap)
+                    $0.right.equalTo(view).offset(-Constants.gap)
                     $0.height.equalTo(24)
+                }
+        }
+    
+        _historicalTableView.with {
+            let nib = NSNib(nibNamed: String(describing: QRHistoricalCell.self), bundle: Bundle.main)
+            $0.register(nib, forIdentifier: QRHistoricalCell.className())
+            $0.delegate = self
+            $0.dataSource = self
+            $0.focusRingType = .none
+            $0.addTableColumn(NSTableColumn(identifier: "First"))
+            view.addSubview($0)
+            }.do {
+                $0.snp.makeConstraints {
+                    $0.top.equalTo(_decodePasteBoardQrButton.snp.bottom).offset(Constants.gap)
+                    $0.left.equalTo(view)
+                    $0.right.equalTo(view)
+                    $0.bottom.equalTo(view).offset(-Constants.gap)
                 }
         }
     }
@@ -241,14 +273,14 @@ extension QRMainViewController {
             _decodePasteBoardQrButton.isHidden = false
             _decodePasteBoardQrButton.snp.updateConstraints {
                 $0.height.equalTo(24);
-                $0.bottom.equalTo(view).offset(-Constants.gap);
+                $0.top.equalTo(_dragReceiveImageFileView.snp.bottom).offset(Constants.gap)
             }
         }
         else {
             _decodePasteBoardQrButton.isHidden = true
             _decodePasteBoardQrButton.snp.updateConstraints {
                 $0.height.equalTo(0);
-                $0.bottom.equalTo(view).offset(0);
+                $0.top.equalTo(_dragReceiveImageFileView.snp.bottom)
             }
         }
     }
@@ -263,7 +295,7 @@ private extension QRMainViewController {
                 _sqrImageView.image = NSImage(cgImage: image, size: _sqrImageView.frame.size)
                 _historicalTableView.reloadData()
                 _sqrImageView.snp.updateConstraints {
-                    $0.height.equalTo(250)
+                    $0.height.equalTo(Constants.width)
                 }
             }
         }
