@@ -13,7 +13,7 @@ import EFQRCode
 
 private struct Constants {
     static let gap = 5
-    static let width = 300
+    static let width = 240
     static let qrCodeKeyValues = "qrCodeKeyValues"
     static let qrCodeKeyValueName = "name"
     static let qrCodeKeyValueCode = "code"
@@ -228,7 +228,7 @@ class QRMainViewController: NSViewController {
                     $0.top.equalTo(_dragReceiveImageFileView.snp.bottom).offset(Constants.gap)
                     $0.left.equalTo(view).offset(Constants.gap)
                     $0.right.equalTo(view).offset(-Constants.gap)
-                    $0.height.equalTo(24)
+                    $0.height.equalTo(2)
                 }
         }
     
@@ -306,7 +306,7 @@ extension QRMainViewController {
 private extension QRMainViewController {
     @objc  func _generateAction() {
         let qrCode = _sqrCodeInputTextFeild.stringValue
-        if  qrCode.characters.count > 0 {
+        if  qrCode.count > 0 {
             if let image = EFQRCode.generate(content: qrCode) {
                 //  update ui
                 _sqrImageView.image = NSImage(cgImage: image, size: _sqrImageView.frame.size)
@@ -326,8 +326,8 @@ private extension QRMainViewController {
 
     @objc func _saveAction() {
         let qrCode = _sqrCodeInputTextFeild.stringValue
-        if  qrCode.characters.count > 0 {
-            let qrName = _sqrNameTextFeild.stringValue.characters.count > 0 ? _sqrNameTextFeild.stringValue : qrCode
+        if  qrCode.count > 0 {
+            let qrName = _sqrNameTextFeild.stringValue.count > 0 ? _sqrNameTextFeild.stringValue : qrCode
             //  update data
             _selectedIndex = 0
             storeQRCode(qrCode: qrCode, qrName: qrName)
