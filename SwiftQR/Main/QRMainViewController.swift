@@ -15,6 +15,8 @@ private struct Constants {
     static let gap = 5
     static let width = 240
     static let qrCodeKeyValues = "qrCodeKeyValues"
+//    static let qrCodeKeyValues = "debug_qrCodeKeyValues"
+    static let qrCodeKeyValueIdentifier = "identifier"
     static let qrCodeKeyValueName = "name"
     static let qrCodeKeyValueCode = "code"
     
@@ -26,10 +28,10 @@ class QRMainViewController: NSViewController {
     fileprivate lazy var _encodeLable: NSTextField = NSTextField(frame: NSRect.zero)
     fileprivate lazy var _sqrCodeInputTextFeild: NSTextField = NSTextField(frame: NSRect.zero)
     fileprivate lazy var _sqrNameTextFeild: NSTextField = NSTextField(frame: NSRect.zero)
-    fileprivate lazy var _generateButton: NSButton = NSButton(frame: NSRect.zero)
-    fileprivate lazy var _saveCacheButton: NSButton = NSButton(frame: NSRect.zero)
-    fileprivate lazy var _newCacheButton: NSButton = NSButton(frame: NSRect.zero)
-    fileprivate lazy var _cleanCacheButton: NSButton = NSButton(frame: NSRect.zero)
+    fileprivate lazy var _newCodeButton: NSButton = NSButton(frame: NSRect.zero)
+    fileprivate lazy var _generateCodeButton: NSButton = NSButton(frame: NSRect.zero)
+    fileprivate lazy var _saveCodeButton: NSButton = NSButton(frame: NSRect.zero)
+    fileprivate lazy var _saveAsCodeButton: NSButton = NSButton(frame: NSRect.zero)
     fileprivate lazy var _sqrImageView: NSImageView = NSImageView(frame: NSRect.zero)
 
     fileprivate lazy var _decodeLable: NSTextField = NSTextField(frame: NSRect.zero)
@@ -111,11 +113,11 @@ class QRMainViewController: NSViewController {
                 }
         }
         
-        _generateButton.with {
-            $0.title = "Generate"
+        _newCodeButton.with {
+            $0.title = "New"
             $0.bezelStyle = .rounded
             $0.target = self
-            $0.action = #selector(_generateAction)
+            $0.action = #selector(_newAction)
             view.addSubview($0)
             }.do {
                 $0.snp.makeConstraints {
@@ -125,7 +127,22 @@ class QRMainViewController: NSViewController {
                 }
         }
         
-        _saveCacheButton.with {
+        _generateCodeButton.with {
+            $0.title = "Encode"
+            $0.bezelStyle = .rounded
+            $0.target = self
+            $0.action = #selector(_generateAction)
+            view.addSubview($0)
+            }.do {
+                $0.snp.makeConstraints {
+                    $0.top.equalTo(_newCodeButton.snp.top)
+                    $0.left.equalTo(_newCodeButton.snp.right).offset(Constants.gap)
+                    $0.width.equalTo(_newCodeButton).offset(10)
+                    $0.height.equalTo(_newCodeButton)
+                }
+        }
+        
+        _saveCodeButton.with {
             $0.title = "Save"
             $0.bezelStyle = .rounded
             $0.target = self
@@ -133,38 +150,25 @@ class QRMainViewController: NSViewController {
             view.addSubview($0)
             }.do {
                 $0.snp.makeConstraints {
-                    $0.top.equalTo(_generateButton.snp.top)
-                    $0.left.equalTo(_generateButton.snp.right).offset(Constants.gap)
-                    $0.width.height.equalTo(_generateButton)
+                    $0.top.equalTo(_generateCodeButton.snp.top)
+                    $0.left.equalTo(_generateCodeButton.snp.right).offset(Constants.gap)
+                    $0.width.height.equalTo(_newCodeButton)
                 }
         }
-        
-        _newCacheButton.with {
-            $0.title = "New"
+    
+        _saveAsCodeButton.with {
+            $0.title = "SaveAs"
             $0.bezelStyle = .rounded
             $0.target = self
-            $0.action = #selector(_newAction)
+            $0.action = #selector(_saveAsAction)
             view.addSubview($0)
             }.do {
                 $0.snp.makeConstraints {
-                    $0.top.equalTo(_saveCacheButton.snp.top)
-                    $0.left.equalTo(_saveCacheButton.snp.right).offset(Constants.gap)
-                    $0.width.height.equalTo(_saveCacheButton)
-                }
-        }
-        
-        _cleanCacheButton.with {
-            $0.title = "Clean"
-            $0.bezelStyle = .rounded
-            $0.target = self
-            $0.action = #selector(_cleanAllCacheAction)
-            view.addSubview($0)
-            }.do {
-                $0.snp.makeConstraints {
-                    $0.top.equalTo(_newCacheButton.snp.top)
-                    $0.left.equalTo(_newCacheButton.snp.right).offset(Constants.gap)
+                    $0.top.equalTo(_saveCodeButton.snp.top)
+                    $0.left.equalTo(_saveCodeButton.snp.right).offset(Constants.gap)
                     $0.right.equalTo(view).offset(-Constants.gap)
-                    $0.width.height.equalTo(_newCacheButton)
+                    $0.width.equalTo(_newCodeButton).offset(10)
+                    $0.height.equalTo(_newCodeButton)
                 }
         }
         
@@ -174,7 +178,7 @@ class QRMainViewController: NSViewController {
             view.addSubview($0)
             }.do {
                 $0.snp.makeConstraints {
-                    $0.top.equalTo(_cleanCacheButton.snp.bottom)
+                    $0.top.equalTo(_saveAsCodeButton.snp.bottom)
                     $0.left.equalTo(view).offset(Constants.gap)
                     $0.right.equalTo(view).offset(-Constants.gap)
                     $0.height.equalTo(0)
@@ -250,13 +254,24 @@ class QRMainViewController: NSViewController {
         }
     }
     
-    fileprivate func storeQRCode(qrCode: String, qrName: String) {
+    fileprivate func storeQRCode(qrCode: String, qrName: String, qrIdentifier: String) {
         if let index = _cacheQRCodeKeyValues.index(where: { (keyValue) -> Bool in
-            return keyValue[Constants.qrCodeKeyValueCode] == qrCode
+            return keyValue[Constants.qrCodeKeyValueIdentifier] == qrIdentifier
         }) {
             _cacheQRCodeKeyValues.remove(at: index)
+            _cacheQRCodeKeyValues.insert(
+                [Constants.qrCodeKeyValueName : qrName,
+                 Constants.qrCodeKeyValueCode : qrCode,
+                 Constants.qrCodeKeyValueIdentifier : qrIdentifier],
+                at: index)
         }
-        _cacheQRCodeKeyValues.insert([Constants.qrCodeKeyValueName : qrName, Constants.qrCodeKeyValueCode : qrCode], at: 0)
+        else {
+            _cacheQRCodeKeyValues.insert(
+                [Constants.qrCodeKeyValueName : qrName,
+                 Constants.qrCodeKeyValueCode : qrCode,
+                 Constants.qrCodeKeyValueIdentifier : qrIdentifier],
+                at: 0)
+        }
         UserDefaults.standard.set(_cacheQRCodeKeyValues, forKey: Constants.qrCodeKeyValues)
     }
     
@@ -278,10 +293,8 @@ class QRMainViewController: NSViewController {
             _generateAction()
         }
     }
-}
-
-extension QRMainViewController {
-    func showDecodePasteBoardQrButtonIfNeed() -> Void {
+    
+    fileprivate func showDecodePasteBoardQrButtonIfNeed() -> Void {
         if let data = NSPasteboard.general().data(forType: Constants.TIFF),
             let image = NSImage(data: data),
             let cgImage = image.toCGImage(),
@@ -302,8 +315,43 @@ extension QRMainViewController {
     }
 }
 
+extension QRMainViewController {
+    func cleanHistory() {
+        let alert = NSAlert(error: NSError(domain: "123", code: 0, userInfo: nil))
+        alert.messageText = "Warning"
+        alert.informativeText = "Confirm clean history?"
+        alert.alertStyle = .warning
+        alert.addButton(withTitle: "Clean")
+        alert.addButton(withTitle: "Cancel")
+        let action = alert.runModal()
+        if action == NSAlertFirstButtonReturn {
+            //  update data
+            _selectedIndex = nil
+            _cacheQRCodeKeyValues.removeAll()
+            UserDefaults.standard.set(_cacheQRCodeKeyValues, forKey: Constants.qrCodeKeyValues)
+            //  update ui
+            _historicalTableView.reloadData()
+        }
+        
+        if action == NSAlertSecondButtonReturn {
+            
+        }
+    }
+}
+
 //  Action
 private extension QRMainViewController {
+    
+    @objc func _newAction() {
+        //  update data
+        _selectedIndex = nil
+        //  update ui
+        _sqrNameTextFeild.stringValue = ""
+        _sqrCodeInputTextFeild.stringValue = ""
+        _generateAction()
+        _historicalTableView.reloadData()
+    }
+    
     @objc  func _generateAction() {
         let qrCode = _sqrCodeInputTextFeild.stringValue
         if  qrCode.count > 0 {
@@ -326,46 +374,39 @@ private extension QRMainViewController {
 
     @objc func _saveAction() {
         let qrCode = _sqrCodeInputTextFeild.stringValue
-        if  qrCode.count > 0 {
-            let qrName = _sqrNameTextFeild.stringValue.count > 0 ? _sqrNameTextFeild.stringValue : qrCode
+        let qrName = _sqrNameTextFeild.stringValue.count > 0 ? _sqrNameTextFeild.stringValue : qrCode
+        if qrCode.count > 0 {
+            //  new save
+            if _selectedIndex == nil {
+                let qrIdentifier = UUID().uuidString
+                //  update data
+                _selectedIndex = 0
+                storeQRCode(qrCode: qrCode, qrName: qrName, qrIdentifier: qrIdentifier)
+                //  update ui
+                _historicalTableView.reloadData()
+            }
+            else {
+                //  save
+                if let qrIdentifier = _cacheQRCodeKeyValues[_selectedIndex!][Constants.qrCodeKeyValueIdentifier] as String? {
+                    //  update data
+                    storeQRCode(qrCode: qrCode, qrName: qrName, qrIdentifier: qrIdentifier)
+                    //  update ui
+                    _historicalTableView.reloadData()
+                }
+            }
+        }
+    }
+    
+    @objc func _saveAsAction() {
+        let qrCode = _sqrCodeInputTextFeild.stringValue
+        let qrName = _sqrNameTextFeild.stringValue.count > 0 ? _sqrNameTextFeild.stringValue : qrCode
+        if qrCode.count > 0 {
+            let qrIdentifier = UUID().uuidString
             //  update data
             _selectedIndex = 0
-            storeQRCode(qrCode: qrCode, qrName: qrName)
+            storeQRCode(qrCode: qrCode, qrName: qrName, qrIdentifier: qrIdentifier)
             //  update ui
             _historicalTableView.reloadData()
-        }
-    }
-    
-    @objc func _newAction() {
-        //  update data
-        _selectedIndex = nil
-        //  update ui
-        _sqrNameTextFeild.stringValue = ""
-        _sqrCodeInputTextFeild.stringValue = ""
-        _generateAction()
-        _historicalTableView.reloadData()
-    }
-    
-    @objc func _cleanAllCacheAction() {
-        
-        let alert = NSAlert(error: NSError(domain: "123", code: 0, userInfo: nil))
-        alert.messageText = "Warning"
-        alert.informativeText = "Confirm clean history?"
-        alert.alertStyle = .warning
-        alert.addButton(withTitle: "Clean")
-        alert.addButton(withTitle: "Cancel")
-        let action = alert.runModal()
-        if action == NSAlertFirstButtonReturn {
-            //  update data
-            _selectedIndex = nil
-            _cacheQRCodeKeyValues.removeAll()
-            UserDefaults.standard.set(_cacheQRCodeKeyValues, forKey: Constants.qrCodeKeyValues)
-            //  update ui
-            _historicalTableView.reloadData()
-        }
-        
-        if action == NSAlertSecondButtonReturn {
-            
         }
     }
     

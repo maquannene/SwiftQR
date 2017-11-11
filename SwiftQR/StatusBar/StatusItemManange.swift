@@ -9,6 +9,7 @@
 import Foundation
 
 enum RightMouseMenu: String {
+    case cleanHistory = "Clean History"
     case hotkey = "Hot Key"
     case quit = "Quit"
 }
@@ -45,15 +46,26 @@ class StatusItemManange {
     
     fileprivate func showRightClickMenu(on view: NSView) {
         NSMenu(title: "Setting").with {
-            let item = NSMenuItem(title: RightMouseMenu.hotkey.rawValue,
-                                  action: #selector(showSettingContoller(sender:)),
-                                  keyEquivalent: HotKeyCenter.shared.hotKey.keyCodeReadable.lowercased()).with { $0.target = self }
-            item.keyEquivalentModifierMask = [.option]
-            $0.addItem(item)
+            let cleanHistoryItem = NSMenuItem(title: RightMouseMenu.cleanHistory.rawValue,
+                                              action: #selector(cleanHistorAction(sender:)),
+                                              keyEquivalent: RightMouseMenu.cleanHistory.rawValue).with {
+                                                $0.target = self
+            }
+            let shortCutSettingItem = NSMenuItem(title: RightMouseMenu.hotkey.rawValue,
+                                                 action: #selector(showSettingContoller(sender:)),
+                                                 keyEquivalent: HotKeyCenter.shared.hotKey.keyCodeReadable.lowercased()).with {
+                                                    $0.target = self
+                                                    $0.keyEquivalentModifierMask = [.option]
+            }
+            let quitItem = NSMenuItem(title: RightMouseMenu.quit.rawValue,
+                                      action: #selector(quitAppAction(sender:)),
+                                      keyEquivalent: RightMouseMenu.quit.rawValue).with {
+                                        $0.target = self
+            }
+            $0.addItem(cleanHistoryItem)
+            $0.addItem(shortCutSettingItem)
             $0.addItem(NSMenuItem.separator())
-            $0.addItem(NSMenuItem(title: RightMouseMenu.quit.rawValue,
-                                  action: #selector(quitAppAction(sender:)),
-                                  keyEquivalent: RightMouseMenu.quit.rawValue).with { $0.target = self })
+            $0.addItem(quitItem)
             }.do {
                 _statusItem.popUpMenu($0)
         }
@@ -89,7 +101,15 @@ private extension StatusItemManange {
         }
     }
     
+    /// clean History setting
+    @objc func cleanHistorAction(sender: Any) {
+        _statusItem.button?.highlight(false)
+        _mainViewController.cleanHistory()
+    }
+    
+    /// shortCut setting
     @objc func showSettingContoller(sender: NSMenuItem) {
+        _statusItem.button?.highlight(false)
         if let window = _settingWindowController?.window as NSWindow?, window.isVisible {
             return
         }
