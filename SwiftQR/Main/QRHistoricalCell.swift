@@ -11,16 +11,19 @@ import Cocoa
 class QRHistoricalCell: NSTableCellView {
     
     @IBOutlet weak var qrTextField: NSTextField!
-    var editHandler: ((_ button: NSButton) -> Void)?
+    var showHandler: ((_ button: NSButton) -> Void)?
     var deleteHandler: ((_ button: NSButton) -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         qrTextField.lineBreakMode = .byTruncatingMiddle
+        qrTextField.wantsLayer = true
+        qrTextField.layer?.borderColor =  NSColor(red: 150 / 255.0, green: 150 / 255.0, blue: 150 / 255.0, alpha: 1).cgColor
+        qrTextField.layer?.borderWidth = 0.5
     }
     
     @IBAction func buttonAction(_ sender: NSButton) {
-        editHandler?(sender)
+        showHandler?(sender)
     }
     
     @IBAction func deleteButtonAction(_ sender: NSButton) {

@@ -9,17 +9,30 @@
 import Cocoa
 import SnapKit
 
-class DragFileView: NSImageView {
+class DragFileView: NSView {
 
     private var _filePath: String?
     private var _image: NSImage?
+    lazy private var _titleTextField: NSTextField = NSTextField(frame: NSRect.zero)
     var receiveImageFile: ((_ image: NSImage) -> Void)?
     
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
         register(forDraggedTypes: [NSFilenamesPboardType])
         wantsLayer = true
-        image = NSImage(named: "scan")
+        _titleTextField.with {
+            $0.alignment = NSTextAlignment.center
+            $0.isBordered = false
+            $0.isEditable = false
+            $0.textColor = NSColor(red: 150 / 255.0, green: 150 / 255.0, blue: 150 / 255.0, alpha: 1)
+            $0.stringValue = "Drag Image To Decode"
+            addSubview(_titleTextField)
+            }.do {
+                $0.snp.makeConstraints {
+                    $0.center.equalTo(self)
+                    $0.width.equalTo(self).offset(-10)
+                }
+        }
     }
     
     required init?(coder: NSCoder) {
