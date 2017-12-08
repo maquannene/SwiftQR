@@ -33,6 +33,7 @@ class QRMainViewController: NSViewController {
     fileprivate lazy var _saveCodeButton: NSButton = NSButton(frame: NSRect.zero)
     fileprivate lazy var _saveAsCodeButton: NSButton = NSButton(frame: NSRect.zero)
     fileprivate lazy var _sqrImageView: NSImageView = NSImageView(frame: NSRect.zero)
+    fileprivate lazy var _copyPasteBoardQrButton: NSButton = NSButton(frame: NSRect.zero)
 
     fileprivate lazy var _decodeLable: NSTextField = NSTextField(frame: NSRect.zero)
     fileprivate lazy var _dragReceiveImageFileView: DragFileView = DragFileView(frame: NSRect.zero)
@@ -185,6 +186,22 @@ class QRMainViewController: NSViewController {
                 }
         }
         
+        _copyPasteBoardQrButton.with {
+            $0.title = "Copy QR To Paste Board";
+            $0.bezelStyle = .rounded
+            $0.target = self
+            $0.action = #selector(_copyQRToPasteBoard)
+            $0.isHidden = true
+            view.addSubview($0)
+            }.do {
+                $0.snp.makeConstraints {
+                    $0.top.equalTo(_sqrImageView.snp.bottom)
+                    $0.left.equalTo(view).offset(Constants.gap)
+                    $0.right.equalTo(view).offset(-Constants.gap)
+                    $0.height.equalTo(0)
+                }
+        }
+        
         _decodeLable.with {
             $0.isBordered = false
             $0.isEditable = false
@@ -193,7 +210,7 @@ class QRMainViewController: NSViewController {
             view.addSubview($0)
             }.do {
                 $0.snp.makeConstraints {
-                    $0.top.equalTo(_sqrImageView.snp.bottom).offset(Constants.gap)
+                    $0.top.equalTo(_copyPasteBoardQrButton.snp.bottom).offset(Constants.gap)
                     $0.left.equalTo(view).offset(Constants.gap)
                     $0.right.equalTo(view).offset(-Constants.gap)
                 }
@@ -225,14 +242,15 @@ class QRMainViewController: NSViewController {
             $0.title = "New QR In Paste Board?";
             $0.bezelStyle = .rounded
             $0.target = self
-            $0.action = #selector(_decodeFromPasteBoard)
+            $0.action = #selector(_decodeQRFromPasteBoard)
+            $0.isHidden = true
             view.addSubview($0)
             }.do {
                 $0.snp.makeConstraints {
-                    $0.top.equalTo(_dragReceiveImageFileView.snp.bottom).offset(Constants.gap)
+                    $0.top.equalTo(_dragReceiveImageFileView.snp.bottom);
                     $0.left.equalTo(view).offset(Constants.gap)
                     $0.right.equalTo(view).offset(-Constants.gap)
-                    $0.height.equalTo(2)
+                    $0.height.equalTo(0)
                 }
         }
     
@@ -362,12 +380,22 @@ private extension QRMainViewController {
                 _sqrImageView.snp.updateConstraints {
                     $0.height.equalTo(Constants.width)
                 }
+                _copyPasteBoardQrButton.isHidden = false
+                _copyPasteBoardQrButton.snp.updateConstraints {
+                    $0.height.equalTo(24);
+                    $0.top.equalTo(_sqrImageView.snp.bottom).offset(Constants.gap)
+                }
             }
         }
         else {
             //  update ui
             _sqrImageView.snp.updateConstraints {
                 $0.height.equalTo(0)
+            }
+            _copyPasteBoardQrButton.isHidden = true
+            _copyPasteBoardQrButton.snp.updateConstraints {
+                $0.height.equalTo(0);
+                $0.top.equalTo(_sqrImageView.snp.bottom)
             }
         }
     }
@@ -410,7 +438,14 @@ private extension QRMainViewController {
         }
     }
     
-    @objc func _decodeFromPasteBoard() {
+    @objc func _copyQRToPasteBoard() {
+        if let image = _sqrImageView.image as NSImage?, let data = image.tiffRepresentation as Data? {
+            NSPasteboard.general().clearContents()
+            NSPasteboard.general().setData(data, forType: Constants.TIFF)
+        }
+    }
+    
+    @objc func _decodeQRFromPasteBoard() {
         if let data = NSPasteboard.general().data(forType: Constants.TIFF),
             let image = NSImage(data: data) {
             decodeImage(image: image)
