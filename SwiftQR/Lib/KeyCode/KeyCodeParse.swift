@@ -50,16 +50,16 @@ struct KeyCodeParse {
     
     static func keyStringFrom(keyCode:UInt16, modifierFlags: NSEventModifierFlags)->(String, String) {
         var mod = ""
-        if modifierFlags.rawValue &  NSEventModifierFlags.control.rawValue != 0 {
+        if modifierFlags.rawValue & NSEventModifierFlags.control.rawValue != 0 {
             mod += "⌃"
         }
-        if modifierFlags.rawValue &  NSEventModifierFlags.option.rawValue != 0 {
+        if modifierFlags.rawValue & NSEventModifierFlags.option.rawValue != 0 {
             mod += "⌥"
         }
-        if modifierFlags.rawValue &  NSEventModifierFlags.shift.rawValue != 0 {
+        if modifierFlags.rawValue & NSEventModifierFlags.shift.rawValue != 0 {
             mod += "⇧"
         }
-        if modifierFlags.rawValue &  NSEventModifierFlags.command.rawValue != 0 {
+        if modifierFlags.rawValue & NSEventModifierFlags.command.rawValue != 0 {
             mod += "⌘"
         }
         

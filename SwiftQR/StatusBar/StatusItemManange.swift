@@ -48,19 +48,20 @@ class StatusItemManange {
         NSMenu(title: "Setting").with {
             let cleanHistoryItem = NSMenuItem(title: RightMouseMenu.cleanHistory.rawValue,
                                               action: #selector(cleanHistorAction(sender:)),
-                                              keyEquivalent: RightMouseMenu.cleanHistory.rawValue).with {
+                                              keyEquivalent: "").with {
                                                 $0.target = self
             }
             let shortCutSettingItem = NSMenuItem(title: RightMouseMenu.hotkey.rawValue,
                                                  action: #selector(showSettingContoller(sender:)),
                                                  keyEquivalent: HotKeyCenter.shared.hotKey.keyCodeReadable.lowercased()).with {
                                                     $0.target = self
-                                                    $0.keyEquivalentModifierMask = [.option]
+                                                    $0.keyEquivalentModifierMask = [HotKeyCenter.shared.hotKey.modifierFlags]
             }
             let quitItem = NSMenuItem(title: RightMouseMenu.quit.rawValue,
                                       action: #selector(quitAppAction(sender:)),
-                                      keyEquivalent: RightMouseMenu.quit.rawValue).with {
+                                      keyEquivalent: "q").with {
                                         $0.target = self
+                                        $0.keyEquivalentModifierMask = [.command]
             }
             $0.addItem(cleanHistoryItem)
             $0.addItem(shortCutSettingItem)
@@ -70,6 +71,11 @@ class StatusItemManange {
                 _statusItem.popUpMenu($0)
         }
     }
+}
+
+// MARK: - Private
+extension StatusItemManange {
+    
 }
 
 // MARK: - Public
