@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C8161301FDEBB690002C63F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C81612F1FDEBB690002C63F /* AppDelegate.swift */; };
+		5C8161341FDEBB690002C63F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C8161331FDEBB690002C63F /* Assets.xcassets */; };
+		5C8161371FDEBB690002C63F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C8161351FDEBB690002C63F /* Main.storyboard */; };
+		5C8161401FDEBBCD0002C63F /* SwiftQRHelper.app in Resources */ = {isa = PBXBuildFile; fileRef = 5C81612D1FDEBB690002C63F /* SwiftQRHelper.app */; };
+		5C8161421FDEBCA30002C63F /* SwiftQRHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5C81612D1FDEBB690002C63F /* SwiftQRHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5C9A75971F6CD63100077F45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A757A1F6CD63100077F45 /* AppDelegate.swift */; };
 		5C9A75981F6CD63100077F45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C9A757B1F6CD63100077F45 /* Assets.xcassets */; };
 		5C9A75991F6CD63100077F45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C9A757C1F6CD63100077F45 /* Main.storyboard */; };
@@ -24,21 +29,19 @@
 		5C9A75A61F6CD63100077F45 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C9A75931F6CD63100077F45 /* Setting.storyboard */; };
 		5C9A75A71F6CD63100077F45 /* StatusItemManange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A75951F6CD63100077F45 /* StatusItemManange.swift */; };
 		5C9A75AC1F6D08A800077F45 /* NSBezierPath+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A75AB1F6D08A800077F45 /* NSBezierPath+.swift */; };
-		5CF522F41E76D0F1006B599E /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF522F11E76D0DB006B599E /* AppKit.framework */; };
-		5CF522F51E76D0F1006B599E /* AppKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF522F11E76D0DB006B599E /* AppKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5CF3BF0A1FDEAF9400CD20BF /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF3BF091FDEAF9400CD20BF /* ServiceManagement.framework */; };
 		BCD218B1A49BF591E14D7279 /* Pods_SwiftQR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3094AAEF794A3C7E4E9345E /* Pods_SwiftQR.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		5CF522F61E76D0F2006B599E /* Embed Frameworks */ = {
+		5CF3BF1E1FDEB04600CD20BF /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
 			files = (
-				5CF522F51E76D0F1006B599E /* AppKit.framework in Embed Frameworks */,
+				5C8161421FDEBCA30002C63F /* SwiftQRHelper.app in CopyFiles */,
 			);
-			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -46,6 +49,12 @@
 /* Begin PBXFileReference section */
 		063FD078CDB64F20CA46464A /* Pods-SwiftQR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftQR.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftQR/Pods-SwiftQR.release.xcconfig"; sourceTree = "<group>"; };
 		57A9BB018F735630B55CBCCB /* Pods-SwiftQR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftQR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftQR/Pods-SwiftQR.debug.xcconfig"; sourceTree = "<group>"; };
+		5C81612D1FDEBB690002C63F /* SwiftQRHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftQRHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C81612F1FDEBB690002C63F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5C8161331FDEBB690002C63F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5C8161361FDEBB690002C63F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5C8161381FDEBB690002C63F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C8161391FDEBB690002C63F /* SwiftQRHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftQRHelper.entitlements; sourceTree = "<group>"; };
 		5C9A757A1F6CD63100077F45 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C9A757B1F6CD63100077F45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C9A757D1F6CD63100077F45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -68,17 +77,26 @@
 		5C9A75951F6CD63100077F45 /* StatusItemManange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItemManange.swift; sourceTree = "<group>"; };
 		5C9A75961F6CD63100077F45 /* SwiftQR-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SwiftQR-Bridging-Header.h"; sourceTree = "<group>"; };
 		5C9A75AB1F6D08A800077F45 /* NSBezierPath+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSBezierPath+.swift"; sourceTree = "<group>"; };
+		5CF3BF091FDEAF9400CD20BF /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		5CF3BF0B1FDEAF9F00CD20BF /* SwiftQR.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftQR.entitlements; sourceTree = "<group>"; };
 		5CF522F11E76D0DB006B599E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		A3094AAEF794A3C7E4E9345E /* Pods_SwiftQR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftQR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4C179381E72CE5D007419B9 /* SwiftQR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftQR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5C81612A1FDEBB690002C63F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D4C179351E72CE5D007419B9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5CF522F41E76D0F1006B599E /* AppKit.framework in Frameworks */,
+				5CF3BF0A1FDEAF9400CD20BF /* ServiceManagement.framework in Frameworks */,
 				BCD218B1A49BF591E14D7279 /* Pods_SwiftQR.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -86,9 +104,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C81612E1FDEBB690002C63F /* SwiftQRHelper */ = {
+			isa = PBXGroup;
+			children = (
+				5C81612F1FDEBB690002C63F /* AppDelegate.swift */,
+				5C8161331FDEBB690002C63F /* Assets.xcassets */,
+				5C8161351FDEBB690002C63F /* Main.storyboard */,
+				5C8161381FDEBB690002C63F /* Info.plist */,
+				5C8161391FDEBB690002C63F /* SwiftQRHelper.entitlements */,
+			);
+			path = SwiftQRHelper;
+			sourceTree = "<group>";
+		};
 		5C9A75791F6CD63100077F45 /* SwiftQR */ = {
 			isa = PBXGroup;
 			children = (
+				5CF3BF0B1FDEAF9F00CD20BF /* SwiftQR.entitlements */,
 				5C9A757A1F6CD63100077F45 /* AppDelegate.swift */,
 				5C9A757B1F6CD63100077F45 /* Assets.xcassets */,
 				5C9A757C1F6CD63100077F45 /* Main.storyboard */,
@@ -174,6 +205,7 @@
 		C5FD38BE5CBBB5091DECE105 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5CF3BF091FDEAF9400CD20BF /* ServiceManagement.framework */,
 				5CF522F11E76D0DB006B599E /* AppKit.framework */,
 				A3094AAEF794A3C7E4E9345E /* Pods_SwiftQR.framework */,
 			);
@@ -184,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				5C9A75791F6CD63100077F45 /* SwiftQR */,
+				5C81612E1FDEBB690002C63F /* SwiftQRHelper */,
 				D4C179391E72CE5D007419B9 /* Products */,
 				FCEF8BA68AC5224A38B9CF74 /* Pods */,
 				C5FD38BE5CBBB5091DECE105 /* Frameworks */,
@@ -194,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				D4C179381E72CE5D007419B9 /* SwiftQR.app */,
+				5C81612D1FDEBB690002C63F /* SwiftQRHelper.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -210,6 +244,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5C81612C1FDEBB690002C63F /* SwiftQRHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C81613A1FDEBB690002C63F /* Build configuration list for PBXNativeTarget "SwiftQRHelper" */;
+			buildPhases = (
+				5C8161291FDEBB690002C63F /* Sources */,
+				5C81612A1FDEBB690002C63F /* Frameworks */,
+				5C81612B1FDEBB690002C63F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftQRHelper;
+			productName = SwiftQRHelper;
+			productReference = 5C81612D1FDEBB690002C63F /* SwiftQRHelper.app */;
+			productType = "com.apple.product-type.application";
+		};
 		D4C179371E72CE5D007419B9 /* SwiftQR */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D4C179471E72CE5D007419B9 /* Build configuration list for PBXNativeTarget "SwiftQR" */;
@@ -220,7 +271,7 @@
 				D4C179361E72CE5D007419B9 /* Resources */,
 				775777F8987A25C5E2228F85 /* [CP] Embed Pods Frameworks */,
 				562B49A43F321D60DFE91C4A /* [CP] Copy Pods Resources */,
-				5CF522F61E76D0F2006B599E /* Embed Frameworks */,
+				5CF3BF1E1FDEB04600CD20BF /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -237,15 +288,23 @@
 		D4C179301E72CE5D007419B9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0820;
+				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = "马权";
 				TargetAttributes = {
+					5C81612C1FDEBB690002C63F = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
 					D4C179371E72CE5D007419B9 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 47A7JUUJ9E;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -263,17 +322,28 @@
 			projectRoot = "";
 			targets = (
 				D4C179371E72CE5D007419B9 /* SwiftQR */,
+				5C81612C1FDEBB690002C63F /* SwiftQRHelper */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5C81612B1FDEBB690002C63F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C8161341FDEBB690002C63F /* Assets.xcassets in Resources */,
+				5C8161371FDEBB690002C63F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D4C179361E72CE5D007419B9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				5C9A75981F6CD63100077F45 /* Assets.xcassets in Resources */,
 				5C9A75991F6CD63100077F45 /* Main.storyboard in Resources */,
+				5C8161401FDEBBCD0002C63F /* SwiftQRHelper.app in Resources */,
 				5C9A75A61F6CD63100077F45 /* Setting.storyboard in Resources */,
 				5C9A75A11F6CD63100077F45 /* QRHistoricalCell.xib in Resources */,
 			);
@@ -330,6 +400,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5C8161291FDEBB690002C63F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C8161301FDEBB690002C63F /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D4C179341E72CE5D007419B9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -353,6 +431,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		5C8161351FDEBB690002C63F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5C8161361FDEBB690002C63F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		5C9A757C1F6CD63100077F45 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -364,6 +450,54 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5C81613B1FDEBB690002C63F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = SwiftQRHelper/SwiftQRHelper.entitlements;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = SwiftQRHelper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = maquannene.SwiftQRHelper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		5C81613C1FDEBB690002C63F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = SwiftQRHelper/SwiftQRHelper.entitlements;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = SwiftQRHelper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = maquannene.SwiftQRHelper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
 		D4C179451E72CE5D007419B9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -472,9 +606,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 57A9BB018F735630B55CBCCB /* Pods-SwiftQR.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SwiftQR/SwiftQR.entitlements;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 47A7JUUJ9E;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = SwiftQR/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -495,6 +633,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = maquannene.SwiftQR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SwiftQR/SwiftQR-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
@@ -504,9 +643,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 063FD078CDB64F20CA46464A /* Pods-SwiftQR.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SwiftQR/SwiftQR.entitlements;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 47A7JUUJ9E;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = SwiftQR/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -527,6 +670,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = maquannene.SwiftQR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SwiftQR/SwiftQR-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
@@ -535,6 +679,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5C81613A1FDEBB690002C63F /* Build configuration list for PBXNativeTarget "SwiftQRHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C81613B1FDEBB690002C63F /* Debug */,
+				5C81613C1FDEBB690002C63F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D4C179331E72CE5D007419B9 /* Build configuration list for PBXProject "SwiftQR" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
