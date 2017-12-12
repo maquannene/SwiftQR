@@ -97,7 +97,7 @@ class QRMainViewController: NSViewController {
                     $0.top.equalTo(_encodeLable.snp.bottom).offset(Constants.gap)
                     $0.left.equalTo(view).offset(Constants.gap)
                     $0.right.equalTo(view).offset(-Constants.gap)
-                    $0.height.equalTo(44)
+                    $0.height.equalTo(40)
                 }
         }
         
@@ -216,12 +216,13 @@ class QRMainViewController: NSViewController {
                 }
         }
 
+        let dragReceiveImageFileViewHeight = 30
         _dragReceiveImageFileView.with {
             let border = CAShapeLayer()
             border.strokeColor = NSColor(red: 150 / 255.0, green: 150 / 255.0, blue: 150 / 255.0, alpha: 1).cgColor
             border.fillColor = nil
-            border.path = NSBezierPath(rect: NSRect(x: 0, y: 0, width: Constants.width, height: 48)).CGPath
-            border.frame = NSRect(x: 0, y: 0, width: Constants.width, height: 48)
+            border.path = NSBezierPath(rect: NSRect(x: 0, y: 0, width: Constants.width, height: dragReceiveImageFileViewHeight)).CGPath
+            border.frame = NSRect(x: 0, y: 0, width: Constants.width, height: dragReceiveImageFileViewHeight)
             border.lineWidth = 1
             border.lineCap = "square"
             border.lineDashPattern = [8, 4]
@@ -234,7 +235,7 @@ class QRMainViewController: NSViewController {
                     $0.top.equalTo(_decodeLable.snp.bottom).offset(Constants.gap)
                     $0.left.equalTo(view).offset(Constants.gap)
                     $0.right.equalTo(view).offset(-Constants.gap)
-                    $0.height.equalTo(48)
+                    $0.height.equalTo(dragReceiveImageFileViewHeight)
                 }
         }
         

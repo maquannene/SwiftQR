@@ -9,7 +9,7 @@
         <!--Window Controller-->
         <scene sceneID="qhQ-Rl-cQ5">
             <objects>
-                <windowController storyboardIdentifier="HotKeySettingWindowController" showSeguePresentationStyle="single" id="93P-Fr-BK0" customClass="HotKeySettingWindowController" customModule="SwiftQR" customModuleProvider="target" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="PreferencesWindowController" showSeguePresentationStyle="single" id="93P-Fr-BK0" customClass="PreferencesWindowController" customModule="SwiftQR" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="UNt-7W-qBd" customClass="Window" customModule="SwiftQR" customModuleProvider="target">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <rect key="contentRect" x="196" y="238" width="480" height="272"/>
@@ -26,20 +26,20 @@
             </objects>
             <point key="canvasLocation" x="-59" y="-294"/>
         </scene>
-        <!--Hot Key Setting View Controller-->
+        <!--Preferences View Controller-->
         <scene sceneID="JVG-lV-Y0s">
             <objects>
                 <customObject id="Lw7-W0-Ll1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <viewController id="0Zc-vP-RcM" customClass="HotKeySettingViewController" customModule="SwiftQR" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="0Zc-vP-RcM" customClass="PreferencesViewController" customModule="SwiftQR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="u80-RM-Fc4">
-                        <rect key="frame" x="0.0" y="0.0" width="202" height="40"/>
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="90"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ctC-Zp-cfN">
-                                <rect key="frame" x="10" y="8" width="100" height="23"/>
+                                <rect key="frame" x="178" y="48" width="75" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="c4z-bk-QMu"/>
-                                    <constraint firstAttribute="width" constant="100" id="nb1-Ka-JQH"/>
+                                    <constraint firstAttribute="width" constant="75" id="nb1-Ka-JQH"/>
                                 </constraints>
                                 <buttonCell key="cell" type="roundTextured" title="Textured Rounded" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8fC-18-Ius">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -50,7 +50,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k07-N7-dZr">
-                                <rect key="frame" x="114" y="3" width="84" height="31"/>
+                                <rect key="frame" x="257" y="43" width="84" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="72" id="USW-wL-qX7"/>
                                 </constraints>
@@ -62,24 +62,62 @@
                                     <action selector="userDefaultHotKeyAction:" target="0Zc-vP-RcM" id="HL7-mQ-lMz"/>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dyF-y2-DYq">
+                                <rect key="frame" x="18" y="50" width="154" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="XLE-2h-cNZ"/>
+                                    <constraint firstAttribute="height" constant="20" id="n3v-Se-Gsb"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Shortcut key：" id="Uuv-4e-KzW">
+                                    <font key="font" metaFont="systemBold"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Fpc-Ti-smq">
+                                <rect key="frame" x="18" y="20" width="154" height="20"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Launch at log in：" id="plf-pQ-qni">
+                                    <font key="font" metaFont="systemBold"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KMn-go-UMu">
+                                <rect key="frame" x="176" y="21" width="22" height="18"/>
+                                <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="CQF-fx-UEn">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="launchAtLogInAction:" target="0Zc-vP-RcM" id="58O-QD-C3H"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="ctC-Zp-cfN" firstAttribute="leading" secondItem="u80-RM-Fc4" secondAttribute="leading" constant="10" id="5mX-vB-IGe"/>
                             <constraint firstItem="k07-N7-dZr" firstAttribute="leading" secondItem="ctC-Zp-cfN" secondAttribute="trailing" constant="10" id="92G-5X-LhT"/>
-                            <constraint firstAttribute="trailing" secondItem="k07-N7-dZr" secondAttribute="trailing" constant="10" id="VmR-9J-KEF"/>
-                            <constraint firstItem="ctC-Zp-cfN" firstAttribute="top" secondItem="u80-RM-Fc4" secondAttribute="top" constant="10" id="d8t-94-yNI"/>
+                            <constraint firstItem="dyF-y2-DYq" firstAttribute="leading" secondItem="u80-RM-Fc4" secondAttribute="leading" constant="20" id="AT0-Yk-erG"/>
+                            <constraint firstItem="Fpc-Ti-smq" firstAttribute="width" secondItem="dyF-y2-DYq" secondAttribute="width" id="F2e-hw-621"/>
+                            <constraint firstAttribute="bottom" secondItem="Fpc-Ti-smq" secondAttribute="bottom" constant="20" id="Kfw-XN-RBd"/>
+                            <constraint firstItem="dyF-y2-DYq" firstAttribute="top" secondItem="u80-RM-Fc4" secondAttribute="top" constant="20" id="Msf-bL-OzH"/>
+                            <constraint firstItem="KMn-go-UMu" firstAttribute="centerY" secondItem="Fpc-Ti-smq" secondAttribute="centerY" id="OEB-fg-Z5m"/>
+                            <constraint firstItem="Fpc-Ti-smq" firstAttribute="height" secondItem="dyF-y2-DYq" secondAttribute="height" id="Tzh-in-fOB"/>
+                            <constraint firstItem="ctC-Zp-cfN" firstAttribute="leading" secondItem="dyF-y2-DYq" secondAttribute="trailing" constant="8" symbolic="YES" id="c1a-X4-Ffs"/>
                             <constraint firstItem="k07-N7-dZr" firstAttribute="centerY" secondItem="ctC-Zp-cfN" secondAttribute="centerY" id="gqp-kP-WZ4"/>
-                            <constraint firstAttribute="bottom" secondItem="ctC-Zp-cfN" secondAttribute="bottom" constant="10" id="miN-fy-XFp"/>
+                            <constraint firstItem="Fpc-Ti-smq" firstAttribute="trailing" secondItem="dyF-y2-DYq" secondAttribute="trailing" id="hWd-73-Pli"/>
+                            <constraint firstItem="KMn-go-UMu" firstAttribute="leading" secondItem="Fpc-Ti-smq" secondAttribute="trailing" constant="8" id="r6o-UT-gbU"/>
+                            <constraint firstItem="ctC-Zp-cfN" firstAttribute="centerY" secondItem="dyF-y2-DYq" secondAttribute="centerY" id="wY8-wB-mcy"/>
+                            <constraint firstItem="Fpc-Ti-smq" firstAttribute="top" secondItem="dyF-y2-DYq" secondAttribute="bottom" constant="10" id="wdL-Dd-MHS"/>
                             <constraint firstItem="k07-N7-dZr" firstAttribute="height" secondItem="ctC-Zp-cfN" secondAttribute="height" id="zgK-pk-Diz"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="hotKeyButton" destination="ctC-Zp-cfN" id="oY6-EV-cgt"/>
+                        <outlet property="launchLogInCheckedButton" destination="CQF-fx-UEn" id="0uo-nV-Aw4"/>
                         <outlet property="userDefaultHotKeyButton" destination="k07-N7-dZr" id="VEc-GU-ged"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-59" y="50"/>
+            <point key="canvasLocation" x="47" y="112"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="juo-gO-clr">

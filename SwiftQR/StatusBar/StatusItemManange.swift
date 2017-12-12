@@ -9,10 +9,10 @@
 import Foundation
 
 enum RightMouseMenu: String {
-    case cleanHistory = "Clean History"
-    case hotkey = "Hot Key"
-    case about = "About"
-    case quit = "Quit"
+    case CleanHistory = "Clean History"
+    case Preferences = "Preferences..."
+    case About = "About"
+    case Quit = "Quit"
 }
 
 class StatusItemManange {
@@ -20,7 +20,7 @@ class StatusItemManange {
     fileprivate var _statusItem: NSStatusItem = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength)
     fileprivate var _popver: NSPopover = NSPopover()
     fileprivate var _mainViewController = QRMainViewController()
-    fileprivate var _settingWindowController: HotKeySettingWindowController?
+    fileprivate var _preferencesWindowController: PreferencesWindowController?
     fileprivate var _aboutWindowController: AboutWindowController?
     
     init() {
@@ -48,23 +48,22 @@ class StatusItemManange {
     
     fileprivate func showRightClickMenu(on view: NSView) {
         NSMenu(title: "Setting").with {
-            let cleanHistoryItem = NSMenuItem(title: RightMouseMenu.cleanHistory.rawValue,
+            let cleanHistoryItem = NSMenuItem(title: RightMouseMenu.CleanHistory.rawValue,
                                               action: #selector(cleanHistorAction(sender:)),
                                               keyEquivalent: "").with {
                                                 $0.target = self
             }
-            let shortCutSettingItem = NSMenuItem(title: RightMouseMenu.hotkey.rawValue,
+            let shortCutSettingItem = NSMenuItem(title: RightMouseMenu.Preferences.rawValue,
                                                  action: #selector(showHotKeySettingContoller(sender:)),
-                                                 keyEquivalent: HotKeyCenter.shared.hotKey.keyCodeReadable.lowercased()).with {
+                                                 keyEquivalent: "").with {
                                                     $0.target = self
-                                                    $0.keyEquivalentModifierMask = [HotKeyCenter.shared.hotKey.modifierFlags]
             }
-            let aboutItem = NSMenuItem(title: RightMouseMenu.about.rawValue,
+            let aboutItem = NSMenuItem(title: RightMouseMenu.About.rawValue,
                                        action: #selector(showAboutController),
                                        keyEquivalent: "").with {
                                         $0.target = self
             }
-            let quitItem = NSMenuItem(title: RightMouseMenu.quit.rawValue,
+            let quitItem = NSMenuItem(title: RightMouseMenu.Quit.rawValue,
                                       action: #selector(quitAppAction(sender:)),
                                       keyEquivalent: "q").with {
                                         $0.target = self
@@ -136,12 +135,12 @@ private extension StatusItemManange {
     /// shortCut setting
     @objc func showHotKeySettingContoller(sender: NSMenuItem) {
         _statusItem.button?.highlight(false)
-        if let window = _settingWindowController?.window as NSWindow?, window.isVisible {
+        if let window = _preferencesWindowController?.window as NSWindow?, window.isVisible {
             return
         }
         NSRunningApplication.current().activate(options: [.activateAllWindows, .activateIgnoringOtherApps])
-        _settingWindowController = HotKeySettingWindowController.windowController()
-        _settingWindowController?.showWindow(self)
+        _preferencesWindowController = PreferencesWindowController.windowController()
+        _preferencesWindowController?.showWindow(self)
     }
     
     /// quit

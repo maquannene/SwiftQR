@@ -32,12 +32,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                                                 name: .killLauncher,
                                                                 object: mainAppIdentifier)
             
-            var path = Bundle.main.bundlePath as NSString
-            path = path.deletingLastPathComponent as NSString
-            path = path.deletingLastPathComponent as NSString
-            path = path.deletingLastPathComponent as NSString
-            path = path.deletingLastPathComponent as NSString
-            NSWorkspace.shared.launchApplication(path as String)
+            let bundlePath = Bundle.main.bundlePath as NSString
+            var pathComponents: [String] = bundlePath.pathComponents
+            pathComponents = Array(pathComponents[0..<(pathComponents.count - 4)])
+            let path: String = NSString.path(withComponents: pathComponents)
+            NSWorkspace.shared.launchApplication(path)
         }
         else {
             self.terminate()

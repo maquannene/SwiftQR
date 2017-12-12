@@ -6,6 +6,8 @@
 //  Copyright © 2017 马权. All rights reserved.
 //
 
+private let kHotKeyIndenfierKey: String = "SwiftQR" + ".kHotKeyIndenfierKey"
+
 class HotKey: NSObject, NSCoding {
     
     var keyCode: UInt16
@@ -54,7 +56,6 @@ final class HotKeyCenter {
     static let shared: HotKeyCenter = HotKeyCenter()
     private static let _defaultKeyCode = UInt16(0x09)
     private static let _defaultModifierFlags = NSEventModifierFlags.control
-    private static let _hotKeyIndenfierKey: String = "hotKeyIndenfierKey.HotKeyCenter"
     
     private var _hotKeyCore: DDHotKeyCenter = DDHotKeyCenter.shared()
     private weak var _observer: AnyObject?
@@ -67,7 +68,7 @@ final class HotKeyCenter {
     }
     
     private init() {
-        if let hotKeyData = UserDefaults.standard.object(forKey: HotKeyCenter._hotKeyIndenfierKey) as? Data,
+        if let hotKeyData = UserDefaults.standard.object(forKey: kHotKeyIndenfierKey) as? Data,
             let hotKey = NSKeyedUnarchiver.unarchiveObject(with: hotKeyData) as? HotKey {
             _hotKey = hotKey
         }
@@ -75,7 +76,7 @@ final class HotKeyCenter {
             _hotKey = HotKey(keyCode: HotKeyCenter._defaultKeyCode,
                              modifierFlags: HotKeyCenter._defaultModifierFlags)
             UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: _hotKey),
-                                      forKey: HotKeyCenter._hotKeyIndenfierKey)
+                                      forKey: kHotKeyIndenfierKey)
         }
     }
     
@@ -109,7 +110,7 @@ final class HotKeyCenter {
         _hotKey = HotKey(keyCode: keyCode,
                          modifierFlags: modifierFlags)
         UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: _hotKey),
-                                  forKey: HotKeyCenter._hotKeyIndenfierKey)
+                                  forKey: kHotKeyIndenfierKey)
         if let hotKey = _hotKey as HotKey? {
             DDHotKeyCenter.shared().do {
                 $0.unregisterAllHotKeys()
