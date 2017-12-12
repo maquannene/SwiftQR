@@ -21,11 +21,12 @@ class HotKeySettingViewController: NSViewController {
         view.layer?.backgroundColor = NSColor.white.cgColor
         
         hotKeyButton.title = HotKeyCenter.shared.hotKey.hotKeyStringReadable
-        _monitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { (event) -> NSEvent? in
-            if let window = self.view.window as NSWindow?, window.isKeyWindow {
+        _monitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { [weak self] (event) -> NSEvent? in
+            if let window = self?.view.window as NSWindow?, window.isKeyWindow,
+                self?.view.window?.firstResponder == self?.hotKeyButton {
                 HotKeyCenter.shared.regist(keyCode: event.keyCode,
                                            modifierFlags: event.modifierFlags)
-                self.hotKeyButton.title = HotKeyCenter.shared.hotKey.hotKeyStringReadable
+                self?.hotKeyButton.title = HotKeyCenter.shared.hotKey.hotKeyStringReadable
             }
             return event
         }
@@ -38,7 +39,12 @@ class HotKeySettingViewController: NSViewController {
     }
     
     @IBAction func setHotKeyAction(_ sender: Any) {
-        view.window?.makeFirstResponder(hotKeyButton)
+        if view.window?.firstResponder == hotKeyButton {
+            self.view.window?.makeFirstResponder(nil)
+        }
+        else {
+            view.window?.makeFirstResponder(hotKeyButton)
+        }
     }
     
     @IBAction func userDefaultHotKeyAction(_ sender: Any) {
