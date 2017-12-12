@@ -26,6 +26,9 @@
 		5C9A75A61F6CD63100077F45 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C9A75931F6CD63100077F45 /* Setting.storyboard */; };
 		5C9A75A71F6CD63100077F45 /* StatusItemManange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A75951F6CD63100077F45 /* StatusItemManange.swift */; };
 		5C9A75AC1F6D08A800077F45 /* NSBezierPath+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A75AB1F6D08A800077F45 /* NSBezierPath+.swift */; };
+		5CA249B91FDF850600FA009A /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA249B81FDF850600FA009A /* AboutWindowController.swift */; };
+		5CA249BB1FDF853300FA009A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA249BA1FDF853300FA009A /* AboutViewController.swift */; };
+		5CA249BD1FDFA89E00FA009A /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA249BC1FDFA89E00FA009A /* Window.swift */; };
 		5CEA1C9A1FDF6AEE007FD882 /* HotKeyCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEA1C971FDF6AEE007FD882 /* HotKeyCenter.swift */; };
 		5CEA1C9B1FDF6AEE007FD882 /* HotKeySettingWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEA1C981FDF6AEE007FD882 /* HotKeySettingWindowController.swift */; };
 		5CEA1C9C1FDF6AEE007FD882 /* HotKeySettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEA1C991FDF6AEE007FD882 /* HotKeySettingViewController.swift */; };
@@ -74,6 +77,9 @@
 		5C9A75951F6CD63100077F45 /* StatusItemManange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItemManange.swift; sourceTree = "<group>"; };
 		5C9A75961F6CD63100077F45 /* SwiftQR-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SwiftQR-Bridging-Header.h"; sourceTree = "<group>"; };
 		5C9A75AB1F6D08A800077F45 /* NSBezierPath+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSBezierPath+.swift"; sourceTree = "<group>"; };
+		5CA249B81FDF850600FA009A /* AboutWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWindowController.swift; sourceTree = "<group>"; };
+		5CA249BA1FDF853300FA009A /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		5CA249BC1FDFA89E00FA009A /* Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
 		5CEA1C971FDF6AEE007FD882 /* HotKeyCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotKeyCenter.swift; sourceTree = "<group>"; };
 		5CEA1C981FDF6AEE007FD882 /* HotKeySettingWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotKeySettingWindowController.swift; sourceTree = "<group>"; };
 		5CEA1C991FDF6AEE007FD882 /* HotKeySettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotKeySettingViewController.swift; sourceTree = "<group>"; };
@@ -139,6 +145,7 @@
 				5C9A75AA1F6D089100077F45 /* Extension */,
 				5C9A75801F6CD63100077F45 /* DDHotKey */,
 				5C9A75871F6CD63100077F45 /* KeyCode */,
+				5CA249BC1FDFA89E00FA009A /* Window.swift */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -204,6 +211,8 @@
 		5CEA1C951FDF6AEE007FD882 /* About */ = {
 			isa = PBXGroup;
 			children = (
+				5CA249B81FDF850600FA009A /* AboutWindowController.swift */,
+				5CA249BA1FDF853300FA009A /* AboutViewController.swift */,
 			);
 			path = About;
 			sourceTree = "<group>";
@@ -431,6 +440,7 @@
 				5CEA1C9B1FDF6AEE007FD882 /* HotKeySettingWindowController.swift in Sources */,
 				5C9A75A71F6CD63100077F45 /* StatusItemManange.swift in Sources */,
 				5C9A759F1F6CD63100077F45 /* DragFileView.swift in Sources */,
+				5CA249BB1FDF853300FA009A /* AboutViewController.swift in Sources */,
 				5C9A75AC1F6D08A800077F45 /* NSBezierPath+.swift in Sources */,
 				5C9A759C1F6CD63100077F45 /* DDHotKeyTextField.m in Sources */,
 				5C9A759E1F6CD63100077F45 /* KeyCodeParse.swift in Sources */,
@@ -441,6 +451,8 @@
 				5C9A759D1F6CD63100077F45 /* DDHotKeyUtilities.m in Sources */,
 				5CEA1C9A1FDF6AEE007FD882 /* HotKeyCenter.swift in Sources */,
 				5C9A75971F6CD63100077F45 /* AppDelegate.swift in Sources */,
+				5CA249B91FDF850600FA009A /* AboutWindowController.swift in Sources */,
+				5CA249BD1FDFA89E00FA009A /* Window.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -46,6 +46,7 @@ class HotKey: NSObject, NSCoding {
         self.init(keyCode: keyCode,
                   modifierFlags: modifierFlags)
     }
+    
 }
 
 final class HotKeyCenter {
@@ -119,6 +120,6 @@ final class HotKeyCenter {
                                   object: nil)
             }
         }
-        
     }
+    
 }

@@ -20,7 +20,7 @@ class HotKeySettingWindowController: NSWindowController {
     }
     
     open class func windowController() -> HotKeySettingWindowController? {
-        if let controller = NSStoryboard(name: "Setting", bundle: nil).instantiateInitialController() as? HotKeySettingWindowController {
+        if let controller = NSStoryboard(name: "Setting", bundle: nil).instantiateController(withIdentifier: String(describing: HotKeySettingWindowController.self)) as? HotKeySettingWindowController {
             return controller
         }
         return nil
@@ -30,12 +30,15 @@ class HotKeySettingWindowController: NSWindowController {
         super.windowDidLoad()
         window?.delegate = self
         window?.level = Int(CGWindowLevelKey.floatingWindow.rawValue)
+        window?.title = "Hot Key"
     }
-
+    
 }
 
 extension HotKeySettingWindowController: NSWindowDelegate {
+    
     func windowWillClose(_ notification: Notification) {
         hotKeyViewController?.close()
     }
+    
 }

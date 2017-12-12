@@ -52,4 +52,5 @@ class HotKeySettingViewController: NSViewController {
         HotKeyCenter.shared.registDefault()
         hotKeyButton.title = HotKeyCenter.shared.hotKey.hotKeyStringReadable
     }
+    
 }

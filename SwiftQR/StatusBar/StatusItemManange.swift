@@ -11,6 +11,7 @@ import Foundation
 enum RightMouseMenu: String {
     case cleanHistory = "Clean History"
     case hotkey = "Hot Key"
+    case about = "About"
     case quit = "Quit"
 }
 
@@ -20,6 +21,7 @@ class StatusItemManange {
     fileprivate var _popver: NSPopover = NSPopover()
     fileprivate var _mainViewController = QRMainViewController()
     fileprivate var _settingWindowController: HotKeySettingWindowController?
+    fileprivate var _aboutWindowController: AboutWindowController?
     
     init() {
         _ = HotKeyCenter.shared.regist(observer: self, selector: #selector(self.hotKeyAction(event:)))
@@ -52,10 +54,15 @@ class StatusItemManange {
                                                 $0.target = self
             }
             let shortCutSettingItem = NSMenuItem(title: RightMouseMenu.hotkey.rawValue,
-                                                 action: #selector(showSettingContoller(sender:)),
+                                                 action: #selector(showHotKeySettingContoller(sender:)),
                                                  keyEquivalent: HotKeyCenter.shared.hotKey.keyCodeReadable.lowercased()).with {
                                                     $0.target = self
                                                     $0.keyEquivalentModifierMask = [HotKeyCenter.shared.hotKey.modifierFlags]
+            }
+            let aboutItem = NSMenuItem(title: RightMouseMenu.about.rawValue,
+                                       action: #selector(showAboutController),
+                                       keyEquivalent: "").with {
+                                        $0.target = self
             }
             let quitItem = NSMenuItem(title: RightMouseMenu.quit.rawValue,
                                       action: #selector(quitAppAction(sender:)),
@@ -65,6 +72,8 @@ class StatusItemManange {
             }
             $0.addItem(cleanHistoryItem)
             $0.addItem(shortCutSettingItem)
+            $0.addItem(NSMenuItem.separator())
+            $0.addItem(aboutItem)
             $0.addItem(NSMenuItem.separator())
             $0.addItem(quitItem)
             }.do {
@@ -113,8 +122,19 @@ private extension StatusItemManange {
         _mainViewController.cleanHistory()
     }
     
+    /// about
+    @objc func showAboutController() {
+        _statusItem.button?.highlight(false)
+        if let window = _aboutWindowController?.window as NSWindow?, window.isVisible {
+            return
+        }
+        NSRunningApplication.current().activate(options: [.activateAllWindows, .activateIgnoringOtherApps])
+        _aboutWindowController = AboutWindowController.windowController()
+        _aboutWindowController?.showWindow(self)
+    }
+    
     /// shortCut setting
-    @objc func showSettingContoller(sender: NSMenuItem) {
+    @objc func showHotKeySettingContoller(sender: NSMenuItem) {
         _statusItem.button?.highlight(false)
         if let window = _settingWindowController?.window as NSWindow?, window.isVisible {
             return

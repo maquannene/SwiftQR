@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="93P-Fr-BK0">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="93P-Fr-BK0">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Window Controller-->
         <scene sceneID="qhQ-Rl-cQ5">
             <objects>
-                <windowController showSeguePresentationStyle="single" id="93P-Fr-BK0" customClass="HotKeySettingWindowController" customModule="SwiftQR" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="UNt-7W-qBd">
+                <windowController storyboardIdentifier="HotKeySettingWindowController" showSeguePresentationStyle="single" id="93P-Fr-BK0" customClass="HotKeySettingWindowController" customModule="SwiftQR" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="UNt-7W-qBd" customClass="Window" customModule="SwiftQR" customModuleProvider="target">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <rect key="contentRect" x="196" y="238" width="480" height="272"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+                        <connections>
+                            <outlet property="delegate" destination="93P-Fr-BK0" id="cuK-gL-M16"/>
+                        </connections>
                     </window>
                     <connections>
                         <segue destination="0Zc-vP-RcM" kind="relationship" relationship="window.shadowedContentViewController" id="dzI-x7-GBs"/>
@@ -26,13 +29,14 @@
         <!--Hot Key Setting View Controller-->
         <scene sceneID="JVG-lV-Y0s">
             <objects>
+                <customObject id="Lw7-W0-Ll1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <viewController id="0Zc-vP-RcM" customClass="HotKeySettingViewController" customModule="SwiftQR" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" misplaced="YES" id="u80-RM-Fc4">
-                        <rect key="frame" x="0.0" y="0.0" width="379" height="267"/>
+                    <view key="view" id="u80-RM-Fc4">
+                        <rect key="frame" x="0.0" y="0.0" width="202" height="40"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ctC-Zp-cfN">
-                                <rect key="frame" x="61" y="189" width="125" height="23"/>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ctC-Zp-cfN">
+                                <rect key="frame" x="10" y="8" width="100" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="c4z-bk-QMu"/>
                                     <constraint firstAttribute="width" constant="100" id="nb1-Ka-JQH"/>
@@ -45,8 +49,8 @@
                                     <action selector="setHotKeyAction:" target="0Zc-vP-RcM" id="69I-HP-Cre"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k07-N7-dZr">
-                                <rect key="frame" x="187" y="185" width="84" height="31"/>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k07-N7-dZr">
+                                <rect key="frame" x="114" y="3" width="84" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="72" id="USW-wL-qX7"/>
                                 </constraints>
@@ -74,9 +78,92 @@
                         <outlet property="userDefaultHotKeyButton" destination="k07-N7-dZr" id="VEc-GU-ged"/>
                     </connections>
                 </viewController>
-                <customObject id="Lw7-W0-Ll1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-121" y="141"/>
+            <point key="canvasLocation" x="-59" y="50"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="juo-gO-clr">
+            <objects>
+                <windowController storyboardIdentifier="AboutWindowController" showSeguePresentationStyle="single" id="Bqa-cg-Tvq" customClass="AboutWindowController" customModule="SwiftQR" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="2xp-Bh-15X" customClass="Window" customModule="SwiftQR" customModuleProvider="target">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <rect key="contentRect" x="196" y="238" width="480" height="272"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+                        <connections>
+                            <outlet property="delegate" destination="Bqa-cg-Tvq" id="4GG-ql-bDb"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="7Xz-wP-BAp" kind="relationship" relationship="window.shadowedContentViewController" id="FjE-xb-jrY"/>
+                    </connections>
+                </windowController>
+                <customObject id="6aq-az-1ih" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="510" y="-294"/>
+        </scene>
+        <!--About View Controller-->
+        <scene sceneID="PHs-HC-aPx">
+            <objects>
+                <customObject id="mw0-a2-cfs" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <viewController id="7Xz-wP-BAp" customClass="AboutViewController" customModule="SwiftQR" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="ZLz-fl-dv8">
+                        <rect key="frame" x="0.0" y="0.0" width="348" height="155"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0DJ-4T-Vj5">
+                                <rect key="frame" x="152" y="91" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="GNQ-2N-ElY"/>
+                                    <constraint firstAttribute="height" constant="44" id="OhQ-I4-yR7"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="StatusBarItemIcon" id="C2X-Fh-a7a"/>
+                            </imageView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9oE-Gg-Tqe">
+                                <rect key="frame" x="145" y="69" width="57" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="SwiftQR" id="t7r-Gx-UdU">
+                                    <font key="font" metaFont="systemBold"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XAH-hm-L8F">
+                                <rect key="frame" x="133" y="42" width="81" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Version 1.6.0" id="AqE-Mh-qPW">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="an8-fx-wvV">
+                                <rect key="frame" x="40" y="20" width="268" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="CopyRight © 2017 maquannene.github.com" id="DwY-bx-u5K">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="an8-fx-wvV" firstAttribute="centerX" secondItem="XAH-hm-L8F" secondAttribute="centerX" id="3FE-Wy-X76"/>
+                            <constraint firstAttribute="bottom" secondItem="an8-fx-wvV" secondAttribute="bottom" constant="20" id="C0G-67-9gB"/>
+                            <constraint firstItem="XAH-hm-L8F" firstAttribute="centerX" secondItem="9oE-Gg-Tqe" secondAttribute="centerX" id="GZh-Fk-o8T"/>
+                            <constraint firstItem="9oE-Gg-Tqe" firstAttribute="centerX" secondItem="0DJ-4T-Vj5" secondAttribute="centerX" id="WxO-sQ-Bnu"/>
+                            <constraint firstItem="an8-fx-wvV" firstAttribute="top" secondItem="XAH-hm-L8F" secondAttribute="bottom" constant="5" id="fYC-Vt-vu5"/>
+                            <constraint firstItem="0DJ-4T-Vj5" firstAttribute="centerX" secondItem="ZLz-fl-dv8" secondAttribute="centerX" id="i1i-bU-LC1"/>
+                            <constraint firstItem="9oE-Gg-Tqe" firstAttribute="top" secondItem="0DJ-4T-Vj5" secondAttribute="bottom" constant="5" id="pF5-Fj-FUt"/>
+                            <constraint firstItem="0DJ-4T-Vj5" firstAttribute="top" secondItem="ZLz-fl-dv8" secondAttribute="top" constant="20" id="uCn-KD-fyf"/>
+                            <constraint firstItem="XAH-hm-L8F" firstAttribute="top" secondItem="9oE-Gg-Tqe" secondAttribute="bottom" constant="10" id="wpV-gW-f7L"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="_versionLabel" destination="XAH-hm-L8F" id="c4D-fb-yLK"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="510" y="107.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="StatusBarItemIcon" width="43" height="43"/>
+    </resources>
 </document>
